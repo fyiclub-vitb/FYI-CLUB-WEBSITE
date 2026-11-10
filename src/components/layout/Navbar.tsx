@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { CLUB_META } from '../../data/clubData';
+import logoUrl from '../../assets/fyi-logo.jpg';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ export const Navbar: React.FC = () => {
         <Link to="/" className="flex items-center gap-3 sm:gap-4 group select-none whitespace-nowrap flex-shrink-0">
           <div className="relative w-14 h-14 sm:w-16 sm:h-16 bg-white border-2 border-primary brutal-shadow-sm rounded-lg flex items-center justify-center p-1.5 group-hover:-rotate-2 transition-transform duration-200 overflow-hidden flex-shrink-0">
             <img
-              src="/fyi-logo.jpg"
+              src={logoUrl}
               alt="FYI Logo"
               className="w-full h-full object-contain"
             />

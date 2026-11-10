@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { submitJoinApplication } from '../../lib/firebase';
 import type { JoinApplication } from '../../types';
+import { CURRENT_COHORT, getAdmissionEmailPlaceholder } from '../../data/clubData';
 
 interface JoinModalProps {
   isOpen: boolean;
@@ -59,13 +60,13 @@ export const JoinModal: React.FC<JoinModalProps> = ({ isOpen, onClose, prefilled
               <span className="material-symbols-outlined text-3xl text-primary font-black">check</span>
             </div>
             <span className="font-mono text-xs font-bold text-brand-orange uppercase block mb-1">
-              [TRANSMISSION RECEIVED • ID: {submittedStatus.id.slice(0, 8)}]
+              [TRANSMISSION RECEIVED • APPLICATION LOGGED]
             </span>
             <h3 className="font-headline text-3xl font-black uppercase text-primary mb-3">
               YOU'RE ON THE RADAR.
             </h3>
             <p className="font-body text-base text-primary mb-6">
-              Application stored in FYI {submittedStatus.source === 'firestore' ? 'Cloud Firestore' : 'local dispatch queue'}. A chapter lead will review your experiments and ping you on Discord / WhatsApp.
+              Your application was received. A chapter lead will review your submission and follow up.
             </p>
             <button
               onClick={() => {
@@ -81,7 +82,7 @@ export const JoinModal: React.FC<JoinModalProps> = ({ isOpen, onClose, prefilled
           <div>
             <div className="mb-6">
               <span className="font-mono text-xs text-brand-orange font-bold uppercase tracking-widest block mb-1">
-                COHORT 2025 ADMISSIONS
+                {CURRENT_COHORT} ADMISSIONS
               </span>
               <h3 className="font-headline text-3xl font-black uppercase text-primary leading-tight">
                 APPLY TO JOIN FYI GUILD
@@ -114,7 +115,7 @@ export const JoinModal: React.FC<JoinModalProps> = ({ isOpen, onClose, prefilled
                   <input
                     type="email"
                     required
-                    placeholder="name.2024@vitbhopal.ac.in"
+                    placeholder={getAdmissionEmailPlaceholder('name')}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-white border-2 border-primary p-2.5 font-mono text-sm focus:outline-none focus:border-brand-orange"

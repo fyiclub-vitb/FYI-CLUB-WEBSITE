@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageHeader } from '../../components/common/PageHeader';
 import { TEAM_MEMBERS } from '../../data/clubData';
 import { Link } from 'react-router-dom';
+import { KineticMarqueeRibbon, TextScramble } from '../../components/animations';
 
 const CLUB_TEAMS = [
   {
@@ -61,6 +62,13 @@ export const TeamPage: React.FC = () => {
         badge="100% STUDENT DRIVEN"
         title="OUR SQUADS &amp; LEADERSHIP"
         subtitle="No corporate bureaucracy. President, Vice President, and 6 core functional teams leading software, hardware, creative craft, and campus operations."
+      />
+
+      <KineticMarqueeRibbon
+        items={['TECHNICAL TEAM', 'DESIGN & CONTENT', 'EVENT MANAGEMENT', 'PHOTOGRAPHY', 'PR & OUTREACH', 'SOCIAL MEDIA', '100% STUDENT DRIVEN']}
+        angle={-1}
+        bg="bg-brand-cyan"
+        textColor="text-primary"
       />
 
       {/* Main Team Showcase */}
@@ -124,7 +132,7 @@ export const TeamPage: React.FC = () => {
 
               {/* Member Name */}
               <span className="font-headline text-xl font-black uppercase text-primary group-hover:text-brand-orange transition-colors">
-                {member.name}
+                <TextScramble text={member.name} triggerOnHover={true} />
               </span>
 
               {/* Specialty */}

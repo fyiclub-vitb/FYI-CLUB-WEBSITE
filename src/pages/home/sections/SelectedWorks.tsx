@@ -1,6 +1,7 @@
 import React from 'react';
 import { PROJECTS } from '../../../data/clubData';
 import { Link } from 'react-router-dom';
+import { ImageShutterCurtain } from '../../../components/animations';
 
 export const SelectedWorks: React.FC = () => {
   return (
@@ -128,16 +129,13 @@ export const SelectedWorks: React.FC = () => {
 
                 {/* Right Image Container */}
                 <div className="lg:col-span-6">
-                  <div className="w-full aspect-[16/10] bg-black border-2 border-primary rounded brutal-shadow overflow-hidden relative group/img">
-                    <img
-                      src={proj.image}
-                      alt={proj.title}
-                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute bottom-2 right-2 bg-brand-yellow border-2 border-primary font-mono text-xs font-bold px-2 py-0.5 text-primary">
-                      {proj.version}
-                    </div>
-                  </div>
+                  <ImageShutterCurtain
+                    src={proj.image}
+                    alt={proj.title}
+                    aspectRatio="aspect-[16/10]"
+                    shutterColor="bg-brand-cyan"
+                    className="rounded brutal-shadow"
+                  />
                 </div>
               </div>
             </article>

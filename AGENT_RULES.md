@@ -87,3 +87,4 @@ When creating or modifying components, AI agents **MUST** respect the establishe
 ---
 
 *This document was created to preserve the artistic and architectural integrity of the FYI Club website.*
+

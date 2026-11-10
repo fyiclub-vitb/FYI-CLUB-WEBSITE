@@ -548,7 +548,7 @@ export const BulbWireRoadmap: React.FC = () => {
             href="/join"
             className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-brand-orange text-white px-8 py-4 rounded-xl border-3 border-primary brutal-shadow font-headline font-black text-base uppercase tracking-wider hover:bg-brand-yellow hover:text-primary transition-all"
           >
-            <span>PLUG INTO THE 2025 COHORT</span>
+            <span>PLUG INTO THE 2026 COHORT</span>
             <span className="font-mono text-lg">↗</span>
           </a>
         </div>

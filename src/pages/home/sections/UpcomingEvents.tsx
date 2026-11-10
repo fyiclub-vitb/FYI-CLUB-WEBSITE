@@ -32,11 +32,11 @@ export const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ onClaimPass }) =
               [SAMPLE SCHEDULE • DUMMY CONTENT]
             </span>
             <span className="text-brand-muted hidden sm:inline">
-              — Sample event schedule for layout preview. Official 2025 calendar dates will be announced soon.
+              — Sample event schedule for layout preview. Official 2026 calendar dates will be announced soon.
             </span>
           </div>
           <button
-            onClick={() => onClaimPass('Cohort 2025 Event Updates')}
+            onClick={() => onClaimPass('Cohort 2026 Event Updates')}
             className="font-black text-brand-orange hover:underline uppercase shrink-0"
           >
             NOTIFY ME ↗

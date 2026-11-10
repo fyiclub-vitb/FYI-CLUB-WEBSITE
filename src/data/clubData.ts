@@ -1,10 +1,27 @@
 import { Project, ActivitySprint, EventItem, TeamMember, FaqItem, RoadmapMilestone } from '../types';
 
+// ============================================================================
+// DYNAMIC TEMPORAL SYSTEM (Zero hardcoded year maintenance)
+// Automatically updates every year across the entire website & portal
+// ============================================================================
+export const CURRENT_YEAR = new Date().getFullYear();
+export const NEXT_YEAR = CURRENT_YEAR + 1;
+export const CURRENT_COHORT = `COHORT ${CURRENT_YEAR}`;
+export const ADMISSION_EMAIL_YEAR = CURRENT_YEAR - 1;
+
+export const getCohortYear = () => CURRENT_YEAR;
+export const getCohortLabel = () => `COHORT ${CURRENT_YEAR}`;
+export const getCopyrightNotice = () => `© ${CURRENT_YEAR} FYI VIT BHOPAL.`;
+export const getAdmissionEmailPlaceholder = (prefix = 'first') => `${prefix}.${ADMISSION_EMAIL_YEAR}@vitbhopal.ac.in`;
+
 export const CLUB_META = {
   name: "FYI BHOPAL",
   fullName: "Fraternity of Young Innovators",
   campus: "VIT Bhopal University",
+  domain: "https://fyiclubvitbpl.web.app",
   established: "EST. 2024",
+  currentYear: CURRENT_YEAR,
+  currentCohort: CURRENT_COHORT,
   status: "STATUS: BUILDING WEIRD & USEFUL THINGS ⚡",
   email: "chapter@fyi-vitbhopal.tech",
   heroSubtitle: "While campus sleeps, we compile.",
@@ -20,7 +37,7 @@ export const CLUB_META = {
   metrics: [
     { stamp: "CAMPUS", value: "VIT", label: "Bhopal Chapter", highlight: false },
     { stamp: "ESTABLISHED", value: "2024", label: "Student Innovation Guild", highlight: false },
-    { stamp: "COHORT 2025", value: "OPEN", label: "Rolling Admissions", highlight: true },
+    { stamp: CURRENT_COHORT, value: "OPEN", label: "Rolling Admissions", highlight: true },
     { stamp: "GOAL", value: "100%", label: "Hands-on Code & Hardware", highlight: "yellow" },
   ],
   rules: [
@@ -518,10 +535,10 @@ export const ROADMAP_MILESTONES: RoadmapMilestone[] = [
   },
   {
     step: "03",
-    date: "SPRING 2025",
+    date: "SPRING 2026",
     tag: "COHORT ADMISSIONS",
     tagBg: "bg-brand-orange text-white",
-    title: "Cohort 2025 Open Admissions",
+    title: "Cohort 2026 Open Admissions",
     subtitle: "Freshmen & Sophomores Welcome",
     desc: "Opening admissions for students across Software, Robotics, WebGL, AI, and Product Design. Applications are reviewed on genuine curiosity, not resume fluff.",
     metricBadge: "ADMISSIONS OPEN NOW ↗",
@@ -532,13 +549,13 @@ export const ROADMAP_MILESTONES: RoadmapMilestone[] = [
   },
   {
     step: "04",
-    date: "SUMMER 2025",
+    date: "SUMMER 2026",
     tag: "INAUGURAL SHIPATHON",
     tagBg: "bg-brand-yellow text-primary",
     title: "First 36-Hour Hardware & Software Sprint",
     subtitle: "Campus Hackathon & Showcase",
     desc: "An intensive sprint where teams build functional hardware and software prototypes in one sleepless weekend, judged strictly on working code and working circuits.",
-    metricBadge: "COMING SOON • SUMMER 2025",
+    metricBadge: "COMING SOON • SUMMER 2026",
     metricHighlight: false,
     toolType: "rover",
     toolTitle: "Sprint Assembly Session",
@@ -546,13 +563,13 @@ export const ROADMAP_MILESTONES: RoadmapMilestone[] = [
   },
   {
     step: "05",
-    date: "LATE 2025",
+    date: "LATE 2026",
     tag: "PRODUCTION DEPLOYS",
     tagBg: "bg-primary text-white",
     title: "Publishing Open Source Crates & Prototypes",
     subtitle: "National Hackathons & Public Releases",
     desc: "Deploying production software crates, open-sourcing hardware schematics, and representing VIT Bhopal in national innovation challenges and tech fests.",
-    metricBadge: "COMING SOON • ROADMAP 2025",
+    metricBadge: "COMING SOON • ROADMAP 2026",
     metricHighlight: true,
     toolType: "reactor",
     toolTitle: "Production Deployments",

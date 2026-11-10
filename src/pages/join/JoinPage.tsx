@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PageHeader } from '../../components/common/PageHeader';
 import { submitCohortApplication, ApplicationResult } from './join.service';
 import type { JoinApplication } from '../../types';
-import { CLUB_META } from '../../data/clubData';
+import { CLUB_META, CURRENT_COHORT, getAdmissionEmailPlaceholder } from '../../data/clubData';
 
 export const JoinPage: React.FC = () => {
   const [formData, setFormData] = useState<Omit<JoinApplication, 'createdAt'>>({
@@ -39,7 +39,7 @@ export const JoinPage: React.FC = () => {
   return (
     <div className="w-full">
       <PageHeader
-        tag="06 • COHORT 2025 ADMISSIONS"
+        tag={`06 • ${CURRENT_COHORT} ADMISSIONS`}
         badge="ROLLING SUBMISSIONS"
         title="APPLY TO JOIN THE GUILD"
         subtitle="No memorized syntax trivia. Tell us what you build, break, or solder late into the night."
@@ -55,7 +55,7 @@ export const JoinPage: React.FC = () => {
                   <span className="material-symbols-outlined text-3xl font-black">check</span>
                 </div>
                 <span className="font-mono text-xs font-bold text-brand-orange uppercase block mb-1">
-                  [APPLICATION CONFIRMED • ID: {result.id.slice(0, 10)}]
+                  [APPLICATION CONFIRMED • QUEUED FOR REVIEW]
                 </span>
                 <h2 className="font-headline text-3xl sm:text-4xl font-black uppercase text-primary mb-3">
                   TRANSMISSION RECEIVED
@@ -126,7 +126,7 @@ export const JoinPage: React.FC = () => {
                       <input
                         type="email"
                         required
-                        placeholder="first.2024@vitbhopal.ac.in"
+                        placeholder={getAdmissionEmailPlaceholder('first')}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full bg-[#F6F3EB] border-2 border-primary p-3 font-mono text-sm focus:outline-none focus:bg-white focus:border-brand-orange transition-colors"

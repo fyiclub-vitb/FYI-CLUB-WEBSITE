@@ -1,4 +1,5 @@
 import React from 'react';
+import { TextScramble } from '../animations';
 
 interface PageHeaderProps {
   tag: string;
@@ -27,7 +28,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ tag, title, subtitle, ba
         </div>
 
         <h1 className="font-headline text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-tight">
-          {title}
+          <TextScramble text={title} triggerOnView={true} triggerOnHover={true} />
         </h1>
 
         <p className="font-body text-base sm:text-xl text-primary font-medium max-w-2xl mt-4 leading-relaxed bg-white/70 p-3 border-l-4 border-brand-orange brutal-shadow-sm">

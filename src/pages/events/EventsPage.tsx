@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../../components/common/PageHeader';
-import { EVENTS, ACTIVITIES } from '../../data/clubData';
+import { EVENTS, ACTIVITIES, CURRENT_YEAR } from '../../data/clubData';
 import { JoinModal } from '../../components/common/JoinModal';
 
 export const EventsPage: React.FC = () => {
@@ -19,7 +19,7 @@ export const EventsPage: React.FC = () => {
       <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-14 border-b-2 border-primary">
         <div className="mb-8 pb-3 border-b-2 border-primary">
           <span className="font-mono text-xs text-brand-orange font-bold uppercase tracking-widest block mb-1">
-            UPCOMING RUNS 2024–2025
+            UPCOMING RUNS {CURRENT_YEAR}
           </span>
           <h2 className="font-headline text-3xl sm:text-4xl font-black uppercase text-primary">
             CLAIM A PERFORATED PASS

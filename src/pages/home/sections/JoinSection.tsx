@@ -14,7 +14,7 @@ export const JoinSection: React.FC<JoinSectionProps> = ({ onOpenJoin }) => {
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-primary text-white px-3 py-1 font-mono text-xs font-bold uppercase rounded-sm mb-4">
             <span className="w-2 h-2 rounded-full bg-brand-yellow animate-ping" />
-            <span>COHORT 2025 ADMISSIONS ROLLING</span>
+            <span>COHORT 2026 ADMISSIONS ROLLING</span>
           </div>
 
           <h2 className="font-headline text-4xl sm:text-6xl md:text-7xl font-black uppercase leading-[0.9] text-white tracking-tighter mb-4">
@@ -30,7 +30,7 @@ export const JoinSection: React.FC<JoinSectionProps> = ({ onOpenJoin }) => {
               onClick={onOpenJoin}
               className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-primary text-white hover:bg-brand-yellow hover:text-primary font-mono text-sm sm:text-base font-black px-8 py-4 rounded border-2 border-primary brutal-shadow-md uppercase tracking-wider transition-all"
             >
-              <span>APPLY FOR COHORT 2025 ↗</span>
+              <span>APPLY FOR COHORT 2026 ↗</span>
             </button>
             <span className="font-mono text-xs uppercase font-extrabold text-white tracking-widest bg-primary px-3 py-2 rounded-sm border border-black">
               NO RESUME BUZZWORDS PERMITTED

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageHeader } from '../../components/common/PageHeader';
 import { PROJECTS } from '../../data/clubData';
 import { Link } from 'react-router-dom';
+import { KineticMarqueeRibbon, ImageShutterCurtain } from '../../components/animations';
 
 export const ProjectsPage: React.FC = () => {
   const [filter, setFilter] = useState<'ALL' | 'SOFTWARE' | 'AI' | 'HARDWARE'>('ALL');
@@ -23,6 +24,13 @@ export const ProjectsPage: React.FC = () => {
         subtitle="Exploring systems, WebGL shaders, and embedded robotics. Real student projects and concept previews."
       />
 
+      <KineticMarqueeRibbon
+        items={['OPEN SOURCE', 'EMBEDDED SYSTEMS', 'WEBGL SHADERS', 'STUDENT BUILT', 'ZERO FAKE SCREENSHOTS', 'REAL DEPLOYMENTS']}
+        angle={1}
+        bg="bg-brand-orange"
+        textColor="text-white"
+      />
+
       <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16">
         {/* Notice of Dummy / Preview Content */}
         <div className="mb-8 p-4 bg-brand-yellow/30 border-2 border-primary rounded-xl brutal-shadow-sm flex items-center justify-between gap-4 font-mono text-xs">
@@ -32,7 +40,7 @@ export const ProjectsPage: React.FC = () => {
               [PREVIEW ARCHIVE • DUMMY CONTENT]
             </span>
             <span className="text-brand-muted hidden sm:inline">
-              — Sample project prototypes shown for layout simulation. Cohort 2025 builds are in development.
+              — Sample project prototypes shown for layout simulation. Cohort 2026 builds are in development.
             </span>
           </div>
           <Link to="/join" className="font-black text-brand-orange hover:underline uppercase shrink-0">
@@ -137,15 +145,17 @@ export const ProjectsPage: React.FC = () => {
                 </div>
 
                 <div className="lg:col-span-6">
-                  <div className="w-full aspect-[16/10] bg-black border-2 border-primary rounded brutal-shadow overflow-hidden relative group/img">
-                    <img
-                      src={proj.image}
-                      alt={proj.title}
-                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute bottom-2 right-2 bg-brand-yellow border-2 border-primary font-mono text-xs font-bold px-2 py-0.5 text-primary">
+                  <ImageShutterCurtain
+                    src={proj.image}
+                    alt={proj.title}
+                    aspectRatio="aspect-[16/10]"
+                    shutterColor="bg-brand-orange"
+                    className="rounded brutal-shadow"
+                  />
+                  <div className="relative -mt-8 mr-2 text-right">
+                    <span className="inline-block bg-brand-yellow border-2 border-primary font-mono text-xs font-bold px-2 py-0.5 text-primary">
                       {proj.version}
-                    </div>
+                    </span>
                   </div>
                 </div>
               </div>

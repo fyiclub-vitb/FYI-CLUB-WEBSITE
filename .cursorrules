@@ -16,3 +16,4 @@
 
 ## PRESERVE DEPENDENCIES
 Never remove `firebase`, `framer-motion`, `lucide-react`, `clsx`, or `tailwind-merge` from `package.json`.
+

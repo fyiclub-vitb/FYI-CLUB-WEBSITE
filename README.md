@@ -17,7 +17,7 @@ Built with a bold **Two26Studio-inspired tactile neo-brutalist aesthetic**, the 
 - **Theatrical Vector Assembly Intro:** A continuous SVG vector assembly intro powered by Framer physics that plays on page load with an immediate `[ESC / SKIP INTRO ↗]` bypass.
 - **Two26 Snaking Bulb Wire Roadmap:** An interactive, scroll-driven high-voltage conduit wire glowing in Electric Cyan (`#00E5FF`) and Vivid Orange (`#FF4800`) connecting milestone stations and tool cards.
 - **Organized Squad Hierarchy:** Structured roster representing the Executive Council (President & Vice President) and the 6 functional wings (Technical, Design & Content, Event Management, Photography, PR & Outreach, and Social Media) with Leads and Co-Leads.
-- **Cloud Firestore REST Client:** Serverless recruitment portal using Google Cloud Firestore REST API with resilient offline `localStorage` fallback.
+- **Cloud Firestore applications:** Submissions require Firebase App Check and are never queued in browser storage.
 
 ---
 
@@ -33,19 +33,19 @@ Built with a bold **Two26Studio-inspired tactile neo-brutalist aesthetic**, the 
 | **Database & Auth** | Google Cloud Firestore REST API (`src/lib/firebase.ts`) |
 | **Hosting & CI/CD** | Firebase Hosting + GitHub Actions CI/CD (`.github/workflows/firebase-deploy.yml`) |
 
+### Application security setup
+
+Set `VITE_RECAPTCHA_SITE_KEY` alongside the Firebase web app values in `.env`. Register the production domain (and any development domain) for that reCAPTCHA v3 key. Deploy the restrictive Firestore rules with `firebase deploy --only firestore:rules --config firebase.firestore.json --project fyiclubvitbpl`, then enable **App Check enforcement for Cloud Firestore** in Firebase Console. The rules permit validated creates in `applications` only and deny client reads, edits, and deletes. App Check enforcement is required to reject unverified public clients; keep it enabled after verifying submissions work.
+
 ---
 
 ## 📁 3. File & Directory Architecture
 
 ```
 FYI CLUB WEBISTE/
-├── public/                               # Static assets served at web root
-│   ├── fyi-logo.jpg                      # Official FYI VIT Bhopal Chapter Logo
-│   └── vite.svg
-│
 ├── src/
 │   ├── assets/                           # Bundled media and branding assets
-│   │
+│   │   └── fyi-logo.jpg                  # Official FYI VIT Bhopal Chapter Logo
 │   ├── components/                       # Modular, reusable UI components
 │   │   ├── common/                       # Cross-page shared components
 │   │   │   ├── PageHeader.tsx            # Unified brutalist header banner for all subpages
@@ -75,7 +75,7 @@ FYI CLUB WEBISTE/
 │   │   └── index.ts
 │   │
 │   ├── lib/                              # Services and engines
-│   │   ├── firebase.ts                   # Firestore REST client with offline localStorage queue
+│   │   ├── firebase.ts                   # Firestore REST client with App Check verification
 │   │   └── sound.ts                      # Synthesizes tactile clicks, sparks, and hover ticks via Web Audio API
 │   │
 │   ├── pages/                            # Full-page route views

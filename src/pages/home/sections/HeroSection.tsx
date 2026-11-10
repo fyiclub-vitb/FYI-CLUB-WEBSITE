@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CLUB_META } from '../../../data/clubData';
+import { TextScramble, RollingCounter } from '../../../components/animations';
 
 export const HeroSection: React.FC = () => {
   const [bhopalTime, setBhopalTime] = useState('');
@@ -80,13 +81,13 @@ export const HeroSection: React.FC = () => {
       {/* Monumental Headline */}
       <div className="max-w-5xl mb-6 relative">
         <h1 className="font-headline text-[48px] sm:text-[76px] md:text-[96px] lg:text-[112px] font-black uppercase leading-[0.88] tracking-tighter text-primary">
-          <span className="kinetic-word">IDEAS</span>{' '}
-          <span className="kinetic-word">DON'T</span>{' '}
-          <span className="kinetic-word">SLEEP</span>{' '}
+          <TextScramble text="IDEAS" as="span" className="kinetic-word" triggerOnHover={true} />{' '}
+          <TextScramble text="DON'T" as="span" className="kinetic-word" triggerOnHover={true} />{' '}
+          <TextScramble text="SLEEP" as="span" className="kinetic-word" triggerOnHover={true} />{' '}
           <br className="hidden sm:inline" />
-          <span className="kinetic-word">IN</span>{' '}
+          <TextScramble text="IN" as="span" className="kinetic-word" triggerOnHover={true} />{' '}
           <span className="relative inline-block text-white bg-primary px-2 sm:px-4 py-0 sm:py-1 brutal-shadow-orange rotate-[-1deg] my-1 group cursor-default">
-            <span className="kinetic-word">DRAFT.</span>
+            <TextScramble text="DRAFT." as="span" className="kinetic-word" triggerOnHover={true} />
           </span>
         </h1>
 
@@ -158,7 +159,7 @@ export const HeroSection: React.FC = () => {
                 m.highlight === true ? 'text-brand-orange' : 'text-primary'
               } block leading-tight mt-1`}
             >
-              {m.value}
+              <RollingCounter value={m.value} />
             </span>
             <span
               className={`font-mono text-xs uppercase font-bold ${

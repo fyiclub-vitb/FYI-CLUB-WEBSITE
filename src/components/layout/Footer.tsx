@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CLUB_META } from '../../data/clubData';
+import { CLUB_META, getCopyrightNotice } from '../../data/clubData';
+import logoUrl from '../../assets/fyi-logo.jpg';
 
 export const Footer: React.FC = () => {
   return (
@@ -77,7 +78,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-5 flex items-center gap-3.5">
             <div className="w-14 h-14 bg-white border-2 border-primary brutal-shadow-sm rounded-lg flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
               <img
-                src="/fyi-logo.jpg"
+                src={logoUrl}
                 alt="FYI VIT Bhopal Official Logo"
                 className="w-full h-full object-contain"
                 onError={(e) => {
@@ -141,7 +142,7 @@ export const Footer: React.FC = () => {
 
           {/* Copyright */}
           <div className="md:col-span-3 md:text-right font-mono text-xs font-bold text-brand-muted uppercase">
-            © 2025 FYI VIT BHOPAL.
+            {getCopyrightNotice()}
           </div>
         </div>
       </div>

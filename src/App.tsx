@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component, type ReactNode } from 'react';
+import React, { useState, useEffect, useCallback, useRef, Component, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { IntroLoader } from './components/intro';
 import { CustomCursor } from './components/ui';
@@ -60,6 +60,23 @@ class ErrorBoundary extends Component<
   }
 }
 
+// ─── Trigger original logo intro on route/tab change ────────────────────────
+function RouteChangeListener({ onTriggerIntro }: { onTriggerIntro: () => void }) {
+  const location = useLocation();
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    // Avoid re-triggering on initial mount since it plays on boot
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    onTriggerIntro();
+  }, [location.pathname, onTriggerIntro]);
+
+  return null;
+}
+
 // ─── Scroll to top on route change ─────────────────────────────────────────
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -71,11 +88,17 @@ function ScrollToTop() {
 
 // ─── Main App ──────────────────────────────────────────────────────────────
 export function App() {
-  // Intro stage management: plays on every website load/refresh
+  // Intro stage management: plays on every website load/refresh & on every tab/route navigation
+  const [introKey, setIntroKey] = useState(0);
   const [introStage, setIntroStage] = useState<'playing' | 'lifting' | 'complete'>('playing');
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const [prefilledEvent, setPrefilledEvent] = useState<string | undefined>(undefined);
   const [soundOn, setSoundOn] = useState(true);
+
+  const triggerLogoIntro = useCallback(() => {
+    setIntroKey((prev) => prev + 1);
+    setIntroStage('playing');
+  }, []);
 
   // Activate tactile magnetic pull physics on all .magnetic-btn elements
   useMagneticButtons();
@@ -112,12 +135,14 @@ export function App() {
     <BrowserRouter>
       <ErrorBoundary>
         <ScrollToTop />
+        <RouteChangeListener onTriggerIntro={triggerLogoIntro} />
         <div className="min-h-screen bg-paper-noise font-body text-primary selection:bg-brand-yellow selection:text-primary relative flex flex-col justify-between overflow-x-hidden">
 
-          {/* 1. Framer Vector Assembly Intro Overlay (plays on every website load) */}
+          {/* 1. Framer Vector Assembly Intro Overlay (plays on every website load & tab switch) */}
           {introStage !== 'complete' && (
             <ErrorBoundary>
               <IntroLoader
+                key={introKey}
                 onTransitionStart={() => {
                   setIntroStage('lifting');
                   playSparkSound();
