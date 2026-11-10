@@ -111,12 +111,11 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
   const counterRef = useRef<HTMLSpanElement>(null);
   const phaseRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const [isLifting, setIsLifting] = useState(false);
   const [isCompletedState, setIsCompletedState] = useState(false);
 
-  const setRef = (key: string) => (el: any) => {
+  const setRef = (key: string) => (el: SVGElement | HTMLElement | null) => {
     refs.current[key] = el;
   };
 
@@ -293,7 +292,6 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
 
   return (
     <aside
-      ref={containerRef}
       role="dialog"
       aria-modal="true"
       aria-label="Loading animation"
@@ -557,22 +555,22 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
 
       {/* ── Bottom Progress & Slogan ───────────────────────────── */}
       <div
-        className="w-full max-w-xl mx-auto z-10 transition-opacity duration-300"
+        className="w-full max-w-2xl sm:max-w-3xl mx-auto px-4 z-10 transition-opacity duration-300"
         style={{ opacity: isLifting ? 0 : 1 }}
       >
-        <div className="flex justify-between items-center gap-4 mb-3 font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest">
+        <div className="flex justify-between items-center gap-4 mb-3 font-mono text-xs sm:text-sm font-bold uppercase tracking-widest">
           <span
             ref={phaseRef}
             className={`transition-colors duration-300 ${isCompletedState ? 'text-brand-orange font-black' : 'text-[#FF4800]'}`}
           >
             CONNECTING YOUNG MINDS
           </span>
-          <span className="tabular-nums whitespace-nowrap">
+          <span className="tabular-nums whitespace-nowrap font-black tracking-wider text-sm sm:text-base">
             <span ref={counterRef}>00</span>
-            <span className="opacity-40 ml-1.5">/ 100</span>
+            <span className="opacity-40 ml-1.5 font-normal text-xs sm:text-sm">/ 100</span>
           </span>
         </div>
-        <div className="w-full h-[2px] bg-primary/15 overflow-hidden rounded-full">
+        <div className="w-full h-1 sm:h-1.5 bg-primary/15 overflow-hidden rounded-full">
           <div
             ref={barRef}
             className="w-full h-full bg-primary origin-left transition-transform duration-75"

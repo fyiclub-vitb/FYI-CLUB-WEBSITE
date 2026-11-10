@@ -20,6 +20,8 @@ export const CustomCursor: React.FC = () => {
 
     const lerp = (a: number, b: number, n: number) => (1 - n) * a + n * b;
 
+    let isClickingNow = false;
+
     const render = () => {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
@@ -28,7 +30,8 @@ export const CustomCursor: React.FC = () => {
       ringX = lerp(ringX, mouseX, 0.2);
       ringY = lerp(ringY, mouseY, 0.2);
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+        const scaleStr = isClickingNow ? ' scale(0.85)' : '';
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)${scaleStr}`;
       }
       animId = requestAnimationFrame(render);
     };
@@ -48,6 +51,7 @@ export const CustomCursor: React.FC = () => {
     };
 
     const handleMouseDown = () => {
+      isClickingNow = true;
       setIsClicking(true);
       if (ringRef.current) {
         ringRef.current.classList.add('cursor-ring-active');
@@ -55,6 +59,7 @@ export const CustomCursor: React.FC = () => {
     };
 
     const handleMouseUp = () => {
+      isClickingNow = false;
       setIsClicking(false);
       if (ringRef.current) {
         ringRef.current.classList.remove('cursor-ring-active');

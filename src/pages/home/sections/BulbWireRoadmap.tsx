@@ -44,7 +44,7 @@ export const BulbWireRoadmap: React.FC = () => {
   };
 
   // Wire path length calculation for SVG stroke-dashoffset
-  const WIRE_PATH_LENGTH = 1850;
+  const WIRE_PATH_LENGTH = 2100;
   const currentDashoffset = powerOn
     ? WIRE_PATH_LENGTH * (1 - Math.min(scrollProgress * 1.15, 1))
     : WIRE_PATH_LENGTH;
@@ -131,11 +131,11 @@ export const BulbWireRoadmap: React.FC = () => {
 
         {/* ─── The Snaking Bulb Wire Interactive Canvas ─── */}
         <div className="relative">
-          {/* Central High-Voltage Blue & Orange Conduit Wire (Desktop SVG) */}
-          <div className="hidden lg:block absolute left-1/2 top-4 bottom-4 w-[120px] -translate-x-1/2 pointer-events-none z-10">
+          {/* Central High-Voltage Blue & Orange Conduit Wire (Desktop SVG) — Widened and Deeply Curved (Two26 style) */}
+          <div className="hidden lg:block absolute left-1/2 top-4 bottom-4 w-[240px] -translate-x-1/2 pointer-events-none z-10">
             <svg
               className="w-full h-full"
-              viewBox="0 0 120 1850"
+              viewBox="0 0 240 1850"
               preserveAspectRatio="none"
               fill="none"
             >
@@ -149,7 +149,7 @@ export const BulbWireRoadmap: React.FC = () => {
                   <stop offset="100%" stopColor="#FF4800" />
                 </linearGradient>
                 <filter id="electricNeonGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feGaussianBlur stdDeviation="8" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
@@ -159,17 +159,17 @@ export const BulbWireRoadmap: React.FC = () => {
 
               {/* Outer industrial conduit duct (dark casing) */}
               <path
-                d="M 60 0 C 60 180, 10 240, 10 370 C 10 500, 110 560, 110 740 C 110 920, 10 980, 10 1110 C 10 1240, 110 1300, 110 1480 C 110 1660, 60 1720, 60 1850"
+                d="M 120 0 C 120 180, 15 240, 15 370 C 15 500, 225 560, 225 740 C 225 920, 15 980, 15 1110 C 15 1240, 225 1300, 225 1480 C 225 1660, 120 1720, 120 1850"
                 stroke="#111111"
-                strokeWidth="11"
+                strokeWidth="14"
                 strokeLinecap="round"
               />
 
               {/* Glowing High Voltage Conduit (Electric Blue + Orange Mix) */}
               <path
-                d="M 60 0 C 60 180, 10 240, 10 370 C 10 500, 110 560, 110 740 C 110 920, 10 980, 10 1110 C 10 1240, 110 1300, 110 1480 C 110 1660, 60 1720, 60 1850"
+                d="M 120 0 C 120 180, 15 240, 15 370 C 15 500, 225 560, 225 740 C 225 920, 15 980, 15 1110 C 15 1240, 225 1300, 225 1480 C 225 1660, 120 1720, 120 1850"
                 stroke={powerOn ? 'url(#wireBlueOrangeGrad)' : '#333333'}
-                strokeWidth="6"
+                strokeWidth="8"
                 strokeLinecap="round"
                 strokeDasharray={WIRE_PATH_LENGTH}
                 strokeDashoffset={currentDashoffset}
@@ -180,11 +180,11 @@ export const BulbWireRoadmap: React.FC = () => {
               {/* Inner Sparkling Pulse Core */}
               {powerOn && (
                 <path
-                  d="M 60 0 C 60 180, 10 240, 10 370 C 10 500, 110 560, 110 740 C 110 920, 10 980, 10 1110 C 10 1240, 110 1300, 110 1480 C 110 1660, 60 1720, 60 1850"
+                  d="M 120 0 C 120 180, 15 240, 15 370 C 15 500, 225 560, 225 740 C 225 920, 15 980, 15 1110 C 15 1240, 225 1300, 225 1480 C 225 1660, 120 1720, 120 1850"
                   stroke="#FFFFFF"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
-                  strokeDasharray="16 32"
+                  strokeDasharray="20 36"
                   className="animate-wire-glow"
                 />
               )}
@@ -192,10 +192,10 @@ export const BulbWireRoadmap: React.FC = () => {
           </div>
 
           {/* Mobile Vertical Wire Spine */}
-          <div className="lg:hidden absolute left-5 top-2 bottom-2 w-2 bg-[#111111] z-0 rounded-full">
+          <div className="lg:hidden absolute left-5 top-2 bottom-2 w-3 bg-[#111111] z-0 rounded-full">
             <div
               className={`w-full bg-gradient-to-b from-brand-cyan via-blue-600 to-brand-orange transition-all duration-300 rounded-full ${
-                powerOn ? 'shadow-[0_0_12px_#00E5FF]' : 'opacity-20'
+                powerOn ? 'shadow-[0_0_14px_#00E5FF]' : 'opacity-20'
               }`}
               style={{
                 height: `${Math.min(scrollProgress * 100, 100)}%`,
