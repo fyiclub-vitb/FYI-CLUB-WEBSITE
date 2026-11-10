@@ -1,0 +1,18 @@
+# AI Agent Rules for fyi.vitbhopal Website
+
+## LOCKED FILES - NEVER MODIFY OR OVERWRITE
+- `src/components/intro/IntroLoader.tsx` (Mathematical Framer SVG vector physics animation. STRICTLY LOCKED.)
+- `src/components/intro/*`
+- `src/lib/sound.ts` (Web Audio API sound engine.)
+- `public/fyi-logo.jpg` (Official university club emblem.)
+
+## SAFELY EDITABLE FILES
+- `src/data/clubData.ts` (Projects, events, team roster, FAQs, rules.)
+- `src/pages/*` (All subpages: home, about, projects, events, team, gallery, join.)
+- `src/components/layout/*` (Navbar, Footer.)
+- `src/components/common/*` (PageHeader, JoinModal.)
+- `src/index.css` & `tailwind.config.js` (Styles, tokens, neo-brutalist shadows.)
+- `src/types/index.ts` & `src/lib/firebase.ts`
+
+## PRESERVE DEPENDENCIES
+Never remove `firebase`, `framer-motion`, `lucide-react`, `clsx`, or `tailwind-merge` from `package.json`.
