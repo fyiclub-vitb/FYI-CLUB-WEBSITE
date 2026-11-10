@@ -21,7 +21,7 @@ export const CLUB_META = {
   narrative: "An official student-run technical and innovation chapter under the Dean of Student Welfare (DSW) at VIT Bhopal University. Founded to bring together curious student minds obsessed with writing real code, soldering physical hardware, and shipping working prototypes.",
   socials: {
     instagram: "https://www.instagram.com/fyivitbhopal/",
-    linkedin: "https://www.linkedin.com/company/fyi-vitbhopal",
+    linkedin: "https://www.linkedin.com/company/fyiclub",
     github: "https://github.com/fyi-vitbhopal",
     discord: "https://discord.gg/fyivitbhopal",
     email: "mailto:chapter@fyi-vitbhopal.tech",

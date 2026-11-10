@@ -13,23 +13,40 @@
     <meta property="og:title" content="FYI Club VIT Bhopal | Fraternity of Young Innovators" />
     <meta property="og:description" content="Explore student projects, events, and hands-on innovation from the Fraternity of Young Innovators at VIT Bhopal." />
     <meta property="og:locale" content="en_IN" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://fyiclubvitbpl.web.app/fyi-logo.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="FYI Club VIT Bhopal | Fraternity of Young Innovators" />
     <meta name="twitter:description" content="Explore student projects, events, and hands-on innovation from the Fraternity of Young Innovators at VIT Bhopal." />
+    <meta name="twitter:image" content="https://fyiclubvitbpl.web.app/fyi-logo.jpg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Fraternity of Young Innovators (FYI Club)",
-        "alternateName": ["FYI Club VIT Bhopal", "FYI VIT"],
-        "url": "https://fyiclubvitbpl.web.app/",
-        "description": "A student-run technology and innovation chapter at VIT Bhopal University.",
-        "email": "chapter@fyi-vitbhopal.tech",
-        "sameAs": [
-          "https://www.instagram.com/fyivitbhopal/",
-          "https://www.linkedin.com/company/fyi-vitbhopal",
-          "https://github.com/fyi-vitbhopal",
-          "https://discord.gg/fyivitbhopal"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://fyiclubvitbpl.web.app/#website",
+            "url": "https://fyiclubvitbpl.web.app/",
+            "name": "FYI Club VIT Bhopal",
+            "alternateName": ["FYI Club", "FYI VIT"],
+            "inLanguage": "en-IN",
+            "publisher": { "@id": "https://fyiclubvitbpl.web.app/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://fyiclubvitbpl.web.app/#organization",
+            "name": "Fraternity of Young Innovators",
+            "alternateName": "FYI Club VIT Bhopal",
+            "url": "https://fyiclubvitbpl.web.app/",
+            "logo": "https://fyiclubvitbpl.web.app/fyi-logo.jpg",
+            "description": "A student-run technology and innovation chapter at VIT Bhopal University.",
+            "email": "chapter@fyi-vitbhopal.tech",
+            "sameAs": [
+              "https://www.instagram.com/fyivitbhopal/",
+              "https://www.linkedin.com/company/fyiclub",
+              "https://github.com/fyi-vitbhopal",
+              "https://discord.gg/fyivitbhopal"
+            ]
+          }
         ]
       }
     </script>

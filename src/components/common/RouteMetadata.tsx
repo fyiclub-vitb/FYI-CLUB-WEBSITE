@@ -29,13 +29,14 @@ function setMeta(name: string, content: string, property = false) {
 
 export function RouteMetadata() {
   const { pathname } = useLocation();
+  const normalizedPath = pathname === '/' ? '/' : pathname.replace(/\/+$/, '') || '/';
 
   useEffect(() => {
-    const page = PAGE_METADATA[pathname] ?? {
+    const page = PAGE_METADATA[normalizedPath] ?? {
       title: 'Page Not Found | FYI Club VIT Bhopal',
       description: 'The requested page could not be found on the FYI Club VIT Bhopal website.',
     };
-    const canonicalUrl = `${SITE_URL}${pathname === '/' ? '/' : pathname}`;
+    const canonicalUrl = `${SITE_URL}${normalizedPath}`;
 
     document.title = page.title;
     setMeta('description', page.description);
@@ -53,9 +54,9 @@ export function RouteMetadata() {
     }
     canonical.href = canonicalUrl;
 
-    if (!PAGE_METADATA[pathname]) setMeta('robots', 'noindex, follow');
+    if (!PAGE_METADATA[normalizedPath]) setMeta('robots', 'noindex, follow');
     else setMeta('robots', 'index, follow, max-image-preview:large');
-  }, [pathname]);
+  }, [normalizedPath]);
 
   return null;
 }
