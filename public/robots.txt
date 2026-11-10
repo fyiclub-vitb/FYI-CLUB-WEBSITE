@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fyiclubvitbpl.web.app/sitemap.xml

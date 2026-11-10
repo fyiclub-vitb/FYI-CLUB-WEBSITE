@@ -9,13 +9,12 @@ export function use3DTilt() {
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
-    const cards = document.querySelectorAll<HTMLElement>('[data-tilt]');
+    const cleanups = new Map<HTMLElement, () => void>();
+    const attachCard = (card: HTMLElement) => {
+      if (cleanups.has(card)) return;
 
-    const cleanups: (() => void)[] = [];
-
-    cards.forEach((card) => {
       let isHovered = false;
-      let rafId: number;
+      let rafId: number | null = null;
 
       const handleMouseEnter = () => {
         isHovered = true;
@@ -36,15 +35,17 @@ export function use3DTilt() {
         const rotateX = ((y - centerY) / centerY) * -maxTilt;
         const rotateY = ((x - centerX) / centerX) * maxTilt;
 
-        cancelAnimationFrame(rafId);
+        if (rafId !== null) cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(() => {
+          rafId = null;
           card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
         });
       };
 
       const handleMouseLeave = () => {
         isHovered = false;
-        cancelAnimationFrame(rafId);
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null;
         card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease';
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
       };
@@ -53,16 +54,51 @@ export function use3DTilt() {
       card.addEventListener('mousemove', handleMouseMove);
       card.addEventListener('mouseleave', handleMouseLeave);
 
-      cleanups.push(() => {
+      cleanups.set(card, () => {
         card.removeEventListener('mouseenter', handleMouseEnter);
         card.removeEventListener('mousemove', handleMouseMove);
         card.removeEventListener('mouseleave', handleMouseLeave);
-        cancelAnimationFrame(rafId);
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        card.style.transform = '';
+        card.style.transition = '';
+      });
+    };
+
+    const attachCardsWithin = (root: ParentNode) => {
+      if (root instanceof HTMLElement && root.matches('[data-tilt]')) {
+        attachCard(root);
+      }
+      root.querySelectorAll<HTMLElement>('[data-tilt]').forEach(attachCard);
+    };
+
+    const detachCardsWithin = (root: Node) => {
+      if (!(root instanceof HTMLElement)) return;
+      const cards = [
+        ...(root.matches('[data-tilt]') ? [root] : []),
+        ...root.querySelectorAll<HTMLElement>('[data-tilt]'),
+      ];
+      cards.forEach((card) => {
+        cleanups.get(card)?.();
+        cleanups.delete(card);
+      });
+    };
+
+    // Route transitions replace card nodes after this hook mounts, so watch for additions/removals.
+    attachCardsWithin(document);
+    const domObserver = new MutationObserver((records) => {
+      records.forEach((record) => {
+        record.removedNodes.forEach(detachCardsWithin);
+        record.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) attachCardsWithin(node);
+        });
       });
     });
+    domObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      cleanups.forEach((fn) => fn());
+      domObserver.disconnect();
+      cleanups.forEach((cleanup) => cleanup());
+      cleanups.clear();
     };
   }, []);
 }

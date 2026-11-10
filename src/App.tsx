@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback, useRef, Component, type ReactNode } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useCallback, useRef, Component, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { IntroLoader } from './components/intro';
 import { CustomCursor } from './components/ui';
 import { Navbar, Footer } from './components/layout';
 import { JoinModal } from './components/common';
+import { RouteMetadata } from './components/common/RouteMetadata';
 import { useMagneticButtons, use3DTilt, useScrollReveal } from './hooks';
 import { playClickSound, playSparkSound, toggleSound, isSoundEnabled } from './lib/sound';
 
@@ -80,9 +81,23 @@ function RouteChangeListener({ onTriggerIntro }: { onTriggerIntro: () => void })
 // ─── Scroll to top on route change ─────────────────────────────────────────
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
+
+  // Let the app own route scroll position instead of restoring the previous page's scroll.
+  useLayoutEffect(() => {
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+    return () => {
+      window.history.scrollRestoration = previousRestoration;
+    };
+  }, []);
+
+  // Run before paint so the intro transition cannot reveal the previous route's scroll position.
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [pathname]);
+
   return null;
 }
 
@@ -135,6 +150,7 @@ export function App() {
   return (
     <BrowserRouter>
       <ErrorBoundary>
+        <RouteMetadata />
         <ScrollToTop />
         <RouteChangeListener onTriggerIntro={triggerLogoIntro} />
         <div className="min-h-screen bg-paper-noise font-body text-primary selection:bg-brand-yellow selection:text-primary relative flex flex-col justify-between overflow-x-hidden">

@@ -21,15 +21,14 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   playSound = false,
 }) => {
   const [displayText, setDisplayText] = useState(text);
-  const [isScrambling, setIsScrambling] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
   const frameRef = useRef<number | null>(null);
+  const timeoutRef = useRef<number | null>(null);
   const hasAnimated = useRef(false); // Keep hover and view triggers from restarting the same one-time effect.
 
   const startScramble = () => {
-    if (isScrambling || hasAnimated.current) return;
+    if (hasAnimated.current) return;
     hasAnimated.current = true;
-    setIsScrambling(true);
 
     if (playSound) {
       try {
@@ -63,11 +62,14 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
       if (iteration < maxIterations) {
         // Spread the glyph changes over short intervals to create the decode effect.
         frameRef.current = requestAnimationFrame(() => {
-          setTimeout(step, 18);
+          frameRef.current = null;
+          timeoutRef.current = window.setTimeout(() => {
+            timeoutRef.current = null;
+            step();
+          }, 18);
         });
       } else {
         setDisplayText(text);
-        setIsScrambling(false);
       }
     };
 
@@ -75,6 +77,11 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   };
 
   useEffect(() => {
+    if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+    if (timeoutRef.current !== null) window.clearTimeout(timeoutRef.current);
+    frameRef.current = null;
+    timeoutRef.current = null;
+    hasAnimated.current = false;
     setDisplayText(text);
   }, [text]);
 
@@ -95,11 +102,12 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
 
     observer.observe(elementRef.current);
     return () => observer.disconnect();
-  }, [triggerOnView]);
+  }, [triggerOnView, text, playSound]);
 
   useEffect(() => {
     return () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+      if (timeoutRef.current !== null) window.clearTimeout(timeoutRef.current);
     };
   }, []);
 

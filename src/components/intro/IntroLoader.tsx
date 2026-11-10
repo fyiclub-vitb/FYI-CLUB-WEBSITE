@@ -114,6 +114,8 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
 
   const [isLifting, setIsLifting] = useState(false);
   const [isCompletedState, setIsCompletedState] = useState(false);
+  const finishTimerRef = useRef<number | null>(null);
+  const completionPauseTimerRef = useRef<number | null>(null);
 
   const setRef = (key: string) => (el: SVGElement | HTMLElement | null) => {
     refs.current[key] = el;
@@ -124,7 +126,8 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
     setIsLifting(true);
     onTransitionStart?.();
     // 950ms allows the curtain to wipe all the way up cleanly
-    setTimeout(() => {
+    finishTimerRef.current = window.setTimeout(() => {
+      finishTimerRef.current = null;
       onComplete();
     }, 950);
   };
@@ -275,7 +278,8 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
           );
         }
         // Satisfying 400ms pause on completed 100% state before seamless curtain lift
-        setTimeout(() => {
+        completionPauseTimerRef.current = window.setTimeout(() => {
+          completionPauseTimerRef.current = null;
           handleFinish();
         }, 450);
       }
@@ -287,6 +291,14 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
       cancelled = true;
       cancelAnimationFrame(animFrame);
       haloAnimation?.cancel();
+      if (finishTimerRef.current !== null) {
+        window.clearTimeout(finishTimerRef.current);
+        finishTimerRef.current = null;
+      }
+      if (completionPauseTimerRef.current !== null) {
+        window.clearTimeout(completionPauseTimerRef.current);
+        completionPauseTimerRef.current = null;
+      }
     };
   }, [duration]);
 

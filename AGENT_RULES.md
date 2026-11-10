@@ -74,17 +74,5 @@ When creating or modifying components, AI agents **MUST** respect the establishe
 
 ---
 
-## 📦 4. Dependency Integrity Rule
-
-**NEVER uninstall or remove any of the existing packages from `package.json`**:
-- `firebase`
-- `framer-motion`
-- `lucide-react`
-- `clsx`
-- `tailwind-merge`
-- `react`, `react-dom`, `react-router-dom`
-
----
-
 *This document was created to preserve the artistic and architectural integrity of the FYI Club website.*
 

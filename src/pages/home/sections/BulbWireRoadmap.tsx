@@ -28,7 +28,6 @@ export const BulbWireRoadmap: React.FC = () => {
   }, []);
 
   const handleTogglePower = () => {
-    playClickSound();
     if (!powerOn) {
       setTimeout(() => playSparkSound(), 120);
     }
@@ -105,8 +104,8 @@ export const BulbWireRoadmap: React.FC = () => {
           </div>
 
           {/* Interactive Power Switch Control */}
-          <div className="flex items-center gap-4 bg-white border-2 border-primary p-3 rounded-xl brutal-shadow-sm self-start md:self-end">
-            <div className="flex flex-col text-right font-mono text-[11px] font-bold">
+          <div className="flex w-full max-w-[280px] sm:w-auto sm:max-w-full items-center justify-between gap-3 sm:gap-4 bg-white border-2 border-primary p-2.5 sm:p-3 rounded-xl brutal-shadow-sm self-start md:self-end">
+            <div className="flex min-w-0 flex-col text-right font-mono text-[10px] sm:text-[11px] font-bold">
               <span className="text-primary uppercase">CIRCUIT BREAKER</span>
               <span className={powerOn ? 'text-brand-orange' : 'text-gray-400'}>
                 {powerOn ? '⚡ VOLTAGE: 230V LIVE' : '⭕ CIRCUIT OPEN'}
@@ -114,7 +113,7 @@ export const BulbWireRoadmap: React.FC = () => {
             </div>
             <button
               onClick={handleTogglePower}
-              className={`w-14 h-8 border-2 border-primary rounded-full transition-colors relative flex items-center px-1 ${powerOn ? 'bg-brand-orange' : 'bg-gray-200'
+              className={`w-14 h-8 shrink-0 border-2 border-primary rounded-full transition-colors relative flex items-center px-1 ${powerOn ? 'bg-brand-orange' : 'bg-gray-200'
                 }`}
               title="Toggle wire power conduit"
             >

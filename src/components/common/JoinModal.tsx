@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { submitJoinApplication } from '../../lib/firebase';
 import type { JoinApplication } from '../../types';
 import { CURRENT_COHORT, getAdmissionEmailPlaceholder } from '../../data/clubData';
@@ -22,6 +22,14 @@ export const JoinModal: React.FC<JoinModalProps> = ({ isOpen, onClose, prefilled
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedStatus, setSubmittedStatus] = useState<null | { id: string; source: string }>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setFormData((current) => ({
+      ...current,
+      aboutYou: prefilledEvent ? `Interested in event pass: ${prefilledEvent}` : '',
+    }));
+  }, [isOpen, prefilledEvent]);
 
   if (!isOpen) return null;
 
