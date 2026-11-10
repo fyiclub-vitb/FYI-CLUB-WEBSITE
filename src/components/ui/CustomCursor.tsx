@@ -40,6 +40,8 @@ export const CustomCursor: React.FC = () => {
       mouseY = e.clientY;
       if (!isVisible) {
         setIsVisible(true);
+        ringX = mouseX;
+        ringY = mouseY;
         if (dotRef.current) dotRef.current.style.opacity = '1';
         if (ringRef.current) ringRef.current.style.opacity = '1';
       }

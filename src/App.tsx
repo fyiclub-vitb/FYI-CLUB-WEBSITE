@@ -143,6 +143,7 @@ export function App() {
             <ErrorBoundary>
               <IntroLoader
                 key={introKey}
+                duration={2.6}
                 onTransitionStart={() => {
                   setIntroStage('lifting');
                   playSparkSound();
