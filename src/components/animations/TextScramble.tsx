@@ -108,7 +108,6 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
       ref: elementRef,
       className: `cursor-default select-none transition-colors ${className}`,
       onMouseEnter: triggerOnHover ? startScramble : undefined,
-      onTouchStart: triggerOnHover ? startScramble : undefined,
     },
     displayText
   );

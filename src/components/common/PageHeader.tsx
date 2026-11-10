@@ -27,7 +27,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ tag, title, subtitle, ba
           )}
         </div>
 
-        <h1 className="font-headline text-3xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-tight break-words">
+        <h1 className="font-headline text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-tight">
           <TextScramble text={title} triggerOnView={true} triggerOnHover={true} />
         </h1>
 
