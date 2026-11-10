@@ -5,12 +5,9 @@ import { Project, ActivitySprint, EventItem, TeamMember, FaqItem, RoadmapMilesto
 // Automatically updates every year across the entire website & portal
 // ============================================================================
 export const CURRENT_YEAR = new Date().getFullYear();
-export const NEXT_YEAR = CURRENT_YEAR + 1;
 export const CURRENT_COHORT = `COHORT ${CURRENT_YEAR}`;
 export const ADMISSION_EMAIL_YEAR = CURRENT_YEAR - 1;
 
-export const getCohortYear = () => CURRENT_YEAR;
-export const getCohortLabel = () => `COHORT ${CURRENT_YEAR}`;
 export const getCopyrightNotice = () => `© ${CURRENT_YEAR} FYI VIT BHOPAL.`;
 export const getAdmissionEmailPlaceholder = (prefix = 'first') => `${prefix}.${ADMISSION_EMAIL_YEAR}@vitbhopal.ac.in`;
 
@@ -20,8 +17,6 @@ export const CLUB_META = {
   campus: "VIT Bhopal University",
   domain: "https://fyiclubvitbpl.web.app",
   established: "EST. 2024",
-  currentYear: CURRENT_YEAR,
-  currentCohort: CURRENT_COHORT,
   status: "STATUS: BUILDING WEIRD & USEFUL THINGS ⚡",
   email: "chapter@fyi-vitbhopal.tech",
   heroSubtitle: "While campus sleeps, we compile.",
@@ -77,7 +72,6 @@ export const PROJECTS: Project[] = [
     id: "aether-os",
     number: "001",
     title: "AETHER OS",
-    category: "P2P Mesh Protocol",
     tags: ["DUMMY CONCEPT", "P2P PROTOCOL", "RUST + WASM", "ZERO CENTRAL RELAY"],
     description: "[DUMMY SPECIFICATION] Campus P2P Mesh Protocol. Designed to explore torrent-speed peer-to-peer data distribution across student hostel blocks with zero central server dependencies during high-traffic exam periods.",
     specs: [
@@ -87,14 +81,12 @@ export const PROJECTS: Project[] = [
     ],
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
     version: "V1.4 • [DUMMY PROTOTYPE]",
-    badge: "DUMMY / CONCEPT BUILD",
     repoUrl: "https://github.com/fyi-vitbhopal"
   },
   {
     id: "neurocanvas",
     number: "002",
     title: "NEUROCANVAS",
-    category: "Creative AI & Shaders",
     tags: ["DUMMY CONCEPT", "CREATIVE AI", "WEBGL SHADERS", "IN-BROWSER ONNX"],
     description: "[DUMMY SPECIFICATION] Zero-Cloud Latent Space Synthesizer. Concept simulation running localized neural diffusion models directly inside client browser memory via WebGL 2.0 at 60fps without cloud server costs.",
     specs: [
@@ -104,14 +96,12 @@ export const PROJECTS: Project[] = [
     ],
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
     version: "WEBGL 2.0 • [DUMMY PROTOTYPE]",
-    badge: "DUMMY / CONCEPT BUILD",
     demoUrl: "#"
   },
   {
     id: "pulsebotics",
     number: "003",
     title: "PULSEBOTICS",
-    category: "Autonomous Hardware",
     tags: ["DUMMY CONCEPT", "AUTONOMOUS HARDWARE", "LORAWAN", "ROS 2"],
     description: "[DUMMY SPECIFICATION] Autonomous Agro-Field Rover. Low-cost custom carbon-fiber chassis blueprint equipped with multi-spectral crop diagnostic cameras and long-range LoRa sub-GHz telemetry.",
     specs: [
@@ -121,7 +111,6 @@ export const PROJECTS: Project[] = [
     ],
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
     version: "CUSTOM PCB • [DUMMY PROTOTYPE]",
-    badge: "DUMMY / CONCEPT BUILD",
     demoUrl: "#"
   }
 ];
@@ -224,7 +213,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     socialLinks: {
       linkedin: "https://linkedin.com",
       github: "https://github.com/fyi-vitbhopal",
-      instagram: "https://instagram.com/fyivitbhopal",
     }
   },
   {
@@ -303,7 +291,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     badge: "DESIGN 01",
     socialLinks: {
       linkedin: "https://linkedin.com",
-      instagram: "https://instagram.com/fyivitbhopal",
     }
   },
   {
@@ -320,9 +307,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "\"Distilling complex distributed algorithms and hardware schematics into razor-sharp prose.\"",
     handle: "@sid_editorial",
     badge: "DESIGN 02",
-    socialLinks: {
-      instagram: "https://instagram.com/fyivitbhopal",
-    }
   },
 
   // ── 3. Event Management Team ───────────────────────────────────────────────
@@ -378,9 +362,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "\"Capturing the raw 3 AM exhausted smiles when the LED finally blinks for the first time.\"",
     handle: "@rohan_visuals",
     badge: "MEDIA 01",
-    socialLinks: {
-      instagram: "https://instagram.com/fyivitbhopal",
-    }
   },
   {
     id: "photo-colead",
@@ -396,9 +377,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "\"Cutting high-energy build reels that capture the visceral speed of student engineering.\"",
     handle: "@meera_motion",
     badge: "MEDIA 02",
-    socialLinks: {
-      instagram: "https://instagram.com/fyivitbhopal",
-    }
   },
 
   // ── 5. PR & Outreach Team ───────────────────────────────────────────────────
@@ -454,9 +432,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "\"Turning student terminal logs and breadboard schematics into viral developer culture.\"",
     handle: "@pranav_social",
     badge: "BROADCAST 01",
-    socialLinks: {
-      instagram: "https://instagram.com/fyivitbhopal",
-    }
   },
   {
     id: "social-colead",
@@ -472,9 +447,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "\"Building a 24/7 digital clubhouse where student hackers peer-debug and share live repos.\"",
     handle: "@kritika_discord",
     badge: "BROADCAST 02",
-    socialLinks: {
-      instagram: "https://instagram.com/fyivitbhopal",
-    }
   }
 ];
 

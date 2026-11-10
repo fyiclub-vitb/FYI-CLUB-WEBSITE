@@ -60,7 +60,7 @@ class ErrorBoundary extends Component<
   }
 }
 
-// ─── Trigger original logo intro on route/tab change ────────────────────────
+// Replay the logo intro when the route path changes; query and hash changes are ignored.
 function RouteChangeListener({ onTriggerIntro }: { onTriggerIntro: () => void }) {
   const location = useLocation();
   const isFirstRender = useRef(true);
@@ -88,12 +88,12 @@ function ScrollToTop() {
 
 // ─── Main App ──────────────────────────────────────────────────────────────
 export function App() {
-  // Intro stage management: plays on every website load/refresh & on every tab/route navigation
+  // Keep the overlay's playback and lift phases in sync with the page content.
   const [introKey, setIntroKey] = useState(0);
   const [introStage, setIntroStage] = useState<'playing' | 'lifting' | 'complete'>('playing');
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const [prefilledEvent, setPrefilledEvent] = useState<string | undefined>(undefined);
-  const [soundOn, setSoundOn] = useState(true);
+  const [soundOn, setSoundOn] = useState(isSoundEnabled);
 
   const triggerLogoIntro = useCallback(() => {
     setIntroKey((prev) => prev + 1);
@@ -117,6 +117,7 @@ export function App() {
         playClickSound();
       }
     };
+    // Capture clicks so controls inside nested components share the same tactile feedback.
     window.addEventListener('click', handleGlobalClick, { capture: true });
     return () => window.removeEventListener('click', handleGlobalClick, { capture: true });
   }, []);

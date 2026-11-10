@@ -6,6 +6,7 @@ export const HeroSection: React.FC = () => {
   const [bhopalTime, setBhopalTime] = useState('');
 
   useEffect(() => {
+    // Keep the local campus clock current and release its interval when the hero unmounts.
     const updateTime = () => {
       const now = new Date();
       // Formatted in IST

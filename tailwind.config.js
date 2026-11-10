@@ -6,6 +6,7 @@ export default {
   ],
   darkMode: "class",
   theme: {
+    // These tokens provide the shared colors, typefaces, shadows, and motion utilities.
     extend: {
       colors: {
         "surface": "#F6F3EB",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { CLUB_META } from '../../../data/clubData';
 
+// Present the club's principles and origin story in the homepage editorial layout.
 export const ManifestoSection: React.FC = () => {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-20 border-b-2 border-primary reveal-on-scroll" id="manifesto">

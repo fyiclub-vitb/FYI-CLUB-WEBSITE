@@ -55,6 +55,7 @@ const PHOTOS: GalleryPhoto[] = [
   }
 ];
 
+// Selecting a photo opens a lightbox; clicking its image area keeps the lightbox open.
 export const GalleryPage: React.FC = () => {
   const [activePhoto, setActivePhoto] = useState<GalleryPhoto | null>(null);
 

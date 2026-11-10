@@ -3,7 +3,7 @@ import { TEAM_MEMBERS } from '../../../data/clubData';
 import { Link } from 'react-router-dom';
 
 export const GuildTeam: React.FC = () => {
-  // Feature top core leadership on homepage (President, VP, Tech Lead, Design Lead)
+  // Feature the President, Vice President, Technical Lead, and Design Lead on the homepage.
   const featuredMembers = TEAM_MEMBERS.slice(0, 4);
 
   return (

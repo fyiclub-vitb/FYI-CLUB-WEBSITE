@@ -10,6 +10,7 @@ interface JoinModalProps {
 }
 
 export const JoinModal: React.FC<JoinModalProps> = ({ isOpen, onClose, prefilledEvent }) => {
+  // Seed the optional answer from an event title when the modal first mounts with one.
   const [formData, setFormData] = useState<Omit<JoinApplication, 'createdAt'>>({
     name: '',
     email: '',
@@ -28,6 +29,7 @@ export const JoinModal: React.FC<JoinModalProps> = ({ isOpen, onClose, prefilled
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Keep the submit button locked while the application request is in flight.
     try {
       const res = await submitJoinApplication({
         ...formData,

@@ -19,6 +19,7 @@ export const ImageShutterCurtain: React.FC<ImageShutterCurtainProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Start the one-time reveal when the image is close to entering the viewport.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,7 +44,7 @@ export const ImageShutterCurtain: React.FC<ImageShutterCurtainProps> = ({
       ref={containerRef}
       className={`relative overflow-hidden border-2 border-primary ${aspectRatio} ${className} group`}
     >
-      {/* Target Image with scale transition on hover */}
+      {/* The image stays mounted beneath two curtains, which slide away after the observer fires. */}
       <img
         src={src}
         alt={alt}

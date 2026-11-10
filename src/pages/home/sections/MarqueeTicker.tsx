@@ -22,6 +22,7 @@ const TRACK_2 = [
   "60 FPS WEBGL",
 ];
 
+// Two duplicated tracks keep each CSS marquee continuous as the content loops.
 export const MarqueeTicker: React.FC = () => {
   return (
     <div className="marquee-container w-full bg-primary text-white border-y-4 border-primary overflow-hidden select-none relative shadow-inner">

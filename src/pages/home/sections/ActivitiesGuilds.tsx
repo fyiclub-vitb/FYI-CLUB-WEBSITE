@@ -1,6 +1,7 @@
 import React from 'react';
 import { ACTIVITIES } from '../../../data/clubData';
 
+// Render the activity sprint cards from the shared club data.
 export const ActivitiesGuilds: React.FC = () => {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-20 border-b-2 border-primary reveal-on-scroll" id="activities">

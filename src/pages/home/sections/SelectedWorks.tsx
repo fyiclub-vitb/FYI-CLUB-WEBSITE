@@ -3,6 +3,7 @@ import { PROJECTS } from '../../../data/clubData';
 import { Link } from 'react-router-dom';
 import { ImageShutterCurtain } from '../../../components/animations';
 
+// Render project cards from the shared project data, including shutter-revealed images.
 export const SelectedWorks: React.FC = () => {
   return (
     <section className="w-full bg-[#EBE7DC] py-20 border-b-2 border-primary" id="selected-works">

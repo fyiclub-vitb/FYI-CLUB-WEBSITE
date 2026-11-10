@@ -7,6 +7,7 @@ import { KineticMarqueeRibbon, ImageShutterCurtain } from '../../components/anim
 export const ProjectsPage: React.FC = () => {
   const [filter, setFilter] = useState<'ALL' | 'SOFTWARE' | 'AI' | 'HARDWARE'>('ALL');
 
+  // Each category maps to the project record currently assigned to it.
   const filteredProjects = PROJECTS.filter((proj) => {
     if (filter === 'ALL') return true;
     if (filter === 'SOFTWARE') return proj.id === 'aether-os';

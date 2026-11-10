@@ -4,6 +4,7 @@ import { EVENTS, ACTIVITIES, CURRENT_YEAR } from '../../data/clubData';
 import { JoinModal } from '../../components/common/JoinModal';
 
 export const EventsPage: React.FC = () => {
+  // The selected title opens the application modal with that event prefilled.
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   return (

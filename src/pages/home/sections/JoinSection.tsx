@@ -4,6 +4,7 @@ interface JoinSectionProps {
   onOpenJoin: () => void;
 }
 
+// Compact homepage call to action that opens the shared join flow.
 export const JoinSection: React.FC<JoinSectionProps> = ({ onOpenJoin }) => {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16 reveal-on-scroll" id="join-fyi">

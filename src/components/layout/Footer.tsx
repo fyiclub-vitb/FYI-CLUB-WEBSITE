@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CLUB_META, getCopyrightNotice } from '../../data/clubData';
 import logoUrl from '../../assets/fyi-logo.jpg';
 
+// Shared footer links and contact details come from the central club metadata.
 export const Footer: React.FC = () => {
   return (
     <footer className="w-full bg-[#EBE7DC] border-t-4 border-primary pt-16 pb-12">

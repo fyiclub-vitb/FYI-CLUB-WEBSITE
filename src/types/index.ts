@@ -1,8 +1,8 @@
+// Shared data shapes keep the content records and the components that render them in sync.
 export interface Project {
   id: string;
   number: string;
   title: string;
-  category: string;
   tags: string[];
   description: string;
   specs: {
@@ -12,7 +12,6 @@ export interface Project {
   }[];
   image: string;
   version: string;
-  badge: string;
   repoUrl?: string;
   demoUrl?: string;
 }
@@ -36,7 +35,6 @@ export interface EventItem {
   title: string;
   description: string;
   location: string;
-  claimedLink?: string;
 }
 
 export interface TeamMember {
@@ -63,7 +61,6 @@ export interface TeamMember {
   socialLinks?: {
     linkedin?: string;
     github?: string;
-    instagram?: string;
   };
 }
 

@@ -51,6 +51,7 @@ export const TeamPage: React.FC = () => {
     'Social Media'
   ];
 
+  // Show the full roster for ALL, otherwise filter to the selected department.
   const filteredMembers = selectedDept === 'ALL'
     ? TEAM_MEMBERS
     : TEAM_MEMBERS.filter((m) => m.department === selectedDept);

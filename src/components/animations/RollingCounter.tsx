@@ -29,6 +29,7 @@ export const RollingCounter: React.FC<RollingCounterProps> = ({
       return;
     }
 
+    // Wait until the counter enters view so off-screen numbers do not animate on page load.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,7 +44,7 @@ export const RollingCounter: React.FC<RollingCounterProps> = ({
             const update = (now: number) => {
               const elapsed = now - startTime;
               const progress = Math.min(elapsed / duration, 1);
-              // Ease out exponential
+              // Ease out quickly at first, then slow down as the count reaches its target.
               const ease = 1 - Math.pow(1 - progress, 3);
               const current = startVal + (endVal - startVal) * ease;
 

@@ -5,6 +5,7 @@ interface UpcomingEventsProps {
   onClaimPass: (eventTitle: string) => void;
 }
 
+// Display the event preview cards and delegate each claim action to the parent page.
 export const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ onClaimPass }) => {
   return (
     <section className="w-full bg-[#EBE7DC] py-20 border-b-2 border-primary" id="upcoming-events">
@@ -66,11 +67,7 @@ export const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ onClaimPass }) =
                 </div>
                 <h3
                   className={`font-headline text-2xl font-black uppercase mb-2 text-primary ${
-                    idx === 0
-                      ? 'group-hover:text-brand-orange'
-                      : idx === 1
-                      ? 'group-hover:text-brand-cyan'
-                      : 'group-hover:text-brand-orange'
+                    idx === 1 ? 'group-hover:text-brand-cyan' : 'group-hover:text-brand-orange'
                   } transition-colors`}
                 >
                   {event.title}

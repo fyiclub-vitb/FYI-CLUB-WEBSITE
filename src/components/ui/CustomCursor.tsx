@@ -6,7 +6,6 @@ export const CustomCursor: React.FC = () => {
   const ringRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
     // Only enable custom cursor on fine pointers (desktop mouse/trackpad)
@@ -52,7 +51,6 @@ export const CustomCursor: React.FC = () => {
 
     const handleMouseDown = () => {
       isClickingNow = true;
-      setIsClicking(true);
       if (ringRef.current) {
         ringRef.current.classList.add('cursor-ring-active');
       }
@@ -60,7 +58,6 @@ export const CustomCursor: React.FC = () => {
 
     const handleMouseUp = () => {
       isClickingNow = false;
-      setIsClicking(false);
       if (ringRef.current) {
         ringRef.current.classList.remove('cursor-ring-active');
       }

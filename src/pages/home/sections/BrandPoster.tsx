@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Large editorial brand panel used between the ticker and the manifesto.
 export const BrandPoster: React.FC = () => {
   return (
     <section className="w-full bg-[#EBE7DC] py-16 md:py-24 border-b-2 border-primary relative overflow-hidden">

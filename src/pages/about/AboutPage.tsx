@@ -4,6 +4,7 @@ import { CLUB_META } from '../../data/clubData';
 import { Link } from 'react-router-dom';
 import { BulbWireRoadmap } from '../home/sections/BulbWireRoadmap';
 
+// Combines the club story and principles with the shared animated roadmap.
 export const AboutPage: React.FC = () => {
   return (
     <div className="w-full">

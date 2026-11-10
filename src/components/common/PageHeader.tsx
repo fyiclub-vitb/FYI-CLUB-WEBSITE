@@ -8,6 +8,7 @@ interface PageHeaderProps {
   badge?: string;
 }
 
+// Shared page heading: metadata labels, animated title, and supporting description.
 export const PageHeader: React.FC<PageHeaderProps> = ({ tag, title, subtitle, badge }) => {
   return (
     <div className="w-full bg-[#EBE7DC] py-14 sm:py-20 border-b-2 border-primary relative overflow-hidden">

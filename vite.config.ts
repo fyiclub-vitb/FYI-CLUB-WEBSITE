@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
+        // Keep the official logo at a stable path while hashing other built assets.
         assetFileNames: (assetInfo) => assetInfo.name === 'fyi-logo.jpg'
           ? 'fyi-logo.jpg'
           : 'assets/[name]-[hash][extname]',

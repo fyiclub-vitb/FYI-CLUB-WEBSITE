@@ -89,9 +89,8 @@ export const BulbWireRoadmap: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 bg-white border-2 border-primary px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider brutal-shadow-sm mb-4">
               <span
-                className={`w-2.5 h-2.5 rounded-full ${
-                  powerOn ? 'bg-brand-orange animate-pulse' : 'bg-gray-400'
-                }`}
+                className={`w-2.5 h-2.5 rounded-full ${powerOn ? 'bg-brand-orange animate-pulse' : 'bg-gray-400'
+                  }`}
               />
               <span>HIGH VOLTAGE CHRONOLOGICAL PIPELINE</span>
               <span className="text-brand-muted">•</span>
@@ -115,15 +114,13 @@ export const BulbWireRoadmap: React.FC = () => {
             </div>
             <button
               onClick={handleTogglePower}
-              className={`w-14 h-8 border-2 border-primary rounded-full transition-colors relative flex items-center px-1 ${
-                powerOn ? 'bg-brand-orange' : 'bg-gray-200'
-              }`}
+              className={`w-14 h-8 border-2 border-primary rounded-full transition-colors relative flex items-center px-1 ${powerOn ? 'bg-brand-orange' : 'bg-gray-200'
+                }`}
               title="Toggle wire power conduit"
             >
               <div
-                className={`w-5 h-5 rounded-full border-2 border-primary bg-white transition-transform ${
-                  powerOn ? 'translate-x-6' : 'translate-x-0'
-                }`}
+                className={`w-5 h-5 rounded-full border-2 border-primary bg-white transition-transform ${powerOn ? 'translate-x-6' : 'translate-x-0'
+                  }`}
               />
             </button>
           </div>
@@ -161,7 +158,7 @@ export const BulbWireRoadmap: React.FC = () => {
               <path
                 d="M 120 0 C 120 180, 15 240, 15 370 C 15 500, 225 560, 225 740 C 225 920, 15 980, 15 1110 C 15 1240, 225 1300, 225 1480 C 225 1660, 120 1720, 120 1850"
                 stroke="#111111"
-                strokeWidth="14"
+                strokeWidth="20"
                 strokeLinecap="round"
               />
 
@@ -169,7 +166,7 @@ export const BulbWireRoadmap: React.FC = () => {
               <path
                 d="M 120 0 C 120 180, 15 240, 15 370 C 15 500, 225 560, 225 740 C 225 920, 15 980, 15 1110 C 15 1240, 225 1300, 225 1480 C 225 1660, 120 1720, 120 1850"
                 stroke={powerOn ? 'url(#wireBlueOrangeGrad)' : '#333333'}
-                strokeWidth="8"
+                strokeWidth="10"
                 strokeLinecap="round"
                 strokeDasharray={WIRE_PATH_LENGTH}
                 strokeDashoffset={currentDashoffset}
@@ -182,7 +179,7 @@ export const BulbWireRoadmap: React.FC = () => {
                 <path
                   d="M 120 0 C 120 180, 15 240, 15 370 C 15 500, 225 560, 225 740 C 225 920, 15 980, 15 1110 C 15 1240, 225 1300, 225 1480 C 225 1660, 120 1720, 120 1850"
                   stroke="#FFFFFF"
-                  strokeWidth="2"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   strokeDasharray="20 36"
                   className="animate-wire-glow"
@@ -194,9 +191,8 @@ export const BulbWireRoadmap: React.FC = () => {
           {/* Mobile Vertical Wire Spine */}
           <div className="lg:hidden absolute left-5 top-2 bottom-2 w-3 bg-[#111111] z-0 rounded-full">
             <div
-              className={`w-full bg-gradient-to-b from-brand-cyan via-blue-600 to-brand-orange transition-all duration-300 rounded-full ${
-                powerOn ? 'shadow-[0_0_14px_#00E5FF]' : 'opacity-20'
-              }`}
+              className={`w-full bg-gradient-to-b from-brand-cyan via-blue-600 to-brand-orange transition-all duration-300 rounded-full ${powerOn ? 'shadow-[0_0_14px_#00E5FF]' : 'opacity-20'
+                }`}
               style={{
                 height: `${Math.min(scrollProgress * 100, 100)}%`,
               }}
@@ -212,20 +208,18 @@ export const BulbWireRoadmap: React.FC = () => {
               return (
                 <div
                   key={m.step}
-                  className={`flex flex-col lg:flex-row items-center justify-between ${
-                    isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  }`}
+                  className={`flex flex-col lg:flex-row items-center justify-between ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    }`}
                 >
                   {/* Floating Pill Container (Text Bubble) */}
                   <div className="w-full lg:w-[46%] pl-12 lg:pl-0">
                     <div
                       data-tilt
                       onClick={() => handleSelectStation(idx)}
-                      className={`relative bg-white border-3 border-primary p-6 sm:p-8 rounded-3xl brutal-shadow transition-all duration-300 cursor-pointer group ${
-                        isSelected
-                          ? 'border-brand-orange brutal-shadow-orange ring-2 ring-brand-orange/40'
-                          : 'hover:border-primary hover:brutal-shadow-md'
-                      }`}
+                      className={`relative bg-white border-3 border-primary p-6 sm:p-8 rounded-3xl brutal-shadow transition-all duration-300 cursor-pointer group ${isSelected
+                        ? 'border-brand-orange brutal-shadow-orange ring-2 ring-brand-orange/40'
+                        : 'hover:border-primary hover:brutal-shadow-md'
+                        }`}
                     >
                       {/* Terminal Connection Screw Node */}
                       <div className="absolute -top-3 left-8 w-6 h-6 bg-[#111111] rounded-full border-2 border-white flex items-center justify-center font-mono text-brand-cyan text-[10px] font-black">
@@ -239,9 +233,8 @@ export const BulbWireRoadmap: React.FC = () => {
                             STEP {m.step}
                           </span>
                           <span
-                            className={`font-mono text-xs font-bold px-2 py-0.5 rounded border border-primary ${
-                              m.tagBg || 'bg-brand-yellow text-primary'
-                            }`}
+                            className={`font-mono text-xs font-bold px-2 py-0.5 rounded border border-primary ${m.tagBg || 'bg-brand-yellow text-primary'
+                              }`}
                           >
                             {m.tag}
                           </span>
@@ -267,11 +260,10 @@ export const BulbWireRoadmap: React.FC = () => {
                       {/* Bottom Status Pill */}
                       <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t-2 border-primary/10">
                         <span
-                          className={`font-mono text-[11px] font-black uppercase px-2.5 py-1 rounded border-2 border-primary ${
-                            m.metricHighlight
-                              ? 'bg-brand-cyan text-primary brutal-shadow-sm'
-                              : 'bg-surface text-primary'
-                          }`}
+                          className={`font-mono text-[11px] font-black uppercase px-2.5 py-1 rounded border-2 border-primary ${m.metricHighlight
+                            ? 'bg-brand-cyan text-primary brutal-shadow-sm'
+                            : 'bg-surface text-primary'
+                            }`}
                         >
                           {m.metricBadge}
                         </span>
@@ -286,11 +278,10 @@ export const BulbWireRoadmap: React.FC = () => {
                   <div className="hidden lg:flex w-[8%] justify-center items-center select-none">
                     <div
                       onClick={() => handleSelectStation(idx)}
-                      className={`w-11 h-11 rounded-full border-3 border-primary flex items-center justify-center transition-all duration-300 cursor-pointer ${
-                        powerOn && scrollProgress >= (idx + 0.5) / 5
-                          ? 'bg-gradient-to-tr from-brand-cyan to-brand-orange text-white brutal-shadow-sm scale-110'
-                          : 'bg-white text-primary hover:bg-brand-cyan'
-                      }`}
+                      className={`w-11 h-11 rounded-full border-3 border-primary flex items-center justify-center transition-all duration-300 cursor-pointer ${powerOn && scrollProgress >= (idx + 0.5) / 5
+                        ? 'bg-gradient-to-tr from-brand-cyan to-brand-orange text-white brutal-shadow-sm scale-110'
+                        : 'bg-white text-primary hover:bg-brand-cyan'
+                        }`}
                       title={`Milestone Node ${m.step}`}
                     >
                       <span className="font-mono text-xs font-black">{m.step}</span>
@@ -326,7 +317,7 @@ export const BulbWireRoadmap: React.FC = () => {
                               <rect x="42" y="72" width="16" height="5" fill="#111111" />
                               <rect x="44" y="78" width="12" height="4" fill="#111111" />
                               <rect x="46" y="83" width="8" height="3" fill="#111111" />
-                              
+
                               {/* Coiled Dual Filaments: Orange & Electric Blue */}
                               <path
                                 d="M 44 65 L 46 45 L 49 52 L 51 45 L 53 52 L 56 45 L 56 65"

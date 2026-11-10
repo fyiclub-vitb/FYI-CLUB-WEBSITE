@@ -5,6 +5,7 @@ import type { JoinApplication } from '../../types';
 import { CLUB_META, CURRENT_COHORT, getAdmissionEmailPlaceholder } from '../../data/clubData';
 
 export const JoinPage: React.FC = () => {
+  // The form is controlled locally; submission state selects success, error, or loading UI.
   const [formData, setFormData] = useState<Omit<JoinApplication, 'createdAt'>>({
     name: '',
     email: '',

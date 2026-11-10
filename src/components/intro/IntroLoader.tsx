@@ -332,7 +332,7 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
       >
         <div
           style={{
-            width: 'min(62vw, 410px)',
+            width: 'min(75vw, 520px)',
             aspectRatio: '1 / 1',
             position: 'relative',
             marginTop: -12,
@@ -359,8 +359,8 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
                 <path d={BULB_PATH} />
               </clipPath>
               <radialGradient id={`${uid}halo`}>
-                <stop stopColor={accent} stopOpacity="0.7" />
-                <stop offset="0.3" stopColor={accent} stopOpacity="0.35" />
+                <stop stopColor={accent} stopOpacity="0.95" />
+                <stop offset="0.3" stopColor={accent} stopOpacity="0.6" />
                 <stop offset="1" stopColor={accent} stopOpacity="0" />
               </radialGradient>
               <mask id={`${uid}fm`} maskUnits="userSpaceOnUse" x="-100" y="-100" width="400" height="400">
@@ -555,25 +555,28 @@ export const IntroLoader: React.FC<IntroLoaderProps> = ({
 
       {/* ── Bottom Progress & Slogan ───────────────────────────── */}
       <div
-        className="w-full max-w-2xl sm:max-w-3xl mx-auto px-4 z-10 transition-opacity duration-300"
+        className="w-full max-w-4xl sm:max-w-5xl mx-auto px-6 z-10 transition-opacity duration-300"
         style={{ opacity: isLifting ? 0 : 1 }}
       >
-        <div className="flex justify-between items-center gap-4 mb-3 font-mono text-xs sm:text-sm font-bold uppercase tracking-widest">
-          <span
-            ref={phaseRef}
-            className={`transition-colors duration-300 ${isCompletedState ? 'text-brand-orange font-black' : 'text-[#FF4800]'}`}
-          >
-            CONNECTING YOUNG MINDS
-          </span>
-          <span className="tabular-nums whitespace-nowrap font-black tracking-wider text-sm sm:text-base">
-            <span ref={counterRef}>00</span>
-            <span className="opacity-40 ml-1.5 font-normal text-xs sm:text-sm">/ 100</span>
-          </span>
+        <div className="flex justify-between items-end gap-6 mb-4 font-mono uppercase tracking-widest">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] sm:text-xs text-primary/50 font-bold">// SYSTEM PIPELINE</span>
+            <span
+              ref={phaseRef}
+              className={`text-xs sm:text-base tracking-widest font-black transition-colors duration-300 ${isCompletedState ? 'text-brand-orange' : 'text-[#FF4800]'}`}
+            >
+              CONNECTING YOUNG MINDS
+            </span>
+          </div>
+          <div className="flex items-baseline gap-1 tabular-nums font-headline font-black">
+            <span ref={counterRef} className="text-3xl sm:text-5xl text-primary leading-none">00</span>
+            <span className="text-brand-orange text-lg sm:text-2xl font-black">%</span>
+          </div>
         </div>
-        <div className="w-full h-1 sm:h-1.5 bg-primary/15 overflow-hidden rounded-full">
+        <div className="w-full h-2 sm:h-3 bg-primary/10 border border-primary/20 p-0.5 rounded-full overflow-hidden">
           <div
             ref={barRef}
-            className="w-full h-full bg-primary origin-left transition-transform duration-75"
+            className="w-full h-full bg-primary rounded-full origin-left transition-transform duration-75"
             style={{ transform: 'scaleX(0)' }}
           />
         </div>

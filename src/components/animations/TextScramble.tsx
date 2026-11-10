@@ -24,7 +24,7 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   const [isScrambling, setIsScrambling] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
   const frameRef = useRef<number | null>(null);
-  const hasAnimated = useRef(false); // ← only scramble once ever
+  const hasAnimated = useRef(false); // Keep hover and view triggers from restarting the same one-time effect.
 
   const startScramble = () => {
     if (isScrambling || hasAnimated.current) return;
@@ -61,6 +61,7 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
       setDisplayText(scrambled);
 
       if (iteration < maxIterations) {
+        // Spread the glyph changes over short intervals to create the decode effect.
         frameRef.current = requestAnimationFrame(() => {
           setTimeout(step, 18);
         });
@@ -106,7 +107,7 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
     Component,
     {
       ref: elementRef,
-      className: `cursor-default select-none transition-colors ${className}`,
+      className: `transition-colors ${className}`,
       onMouseEnter: triggerOnHover ? startScramble : undefined,
     },
     displayText

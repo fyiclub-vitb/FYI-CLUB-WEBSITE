@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FAQS } from '../../../data/clubData';
 
 export const FaqSection: React.FC = () => {
+  // Keep one answer open at a time; clicking it again collapses the accordion.
   const [openId, setOpenId] = useState<string | null>(null);
 
   const toggleFaq = (id: string) => {

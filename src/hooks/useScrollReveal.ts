@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 
 /**
- * Two26-style scroll-driven reveal hook.
- * Resiliently observes elements with `.reveal-on-scroll` across route changes
- * and ensures elements are always revealed when in viewport.
+ * Adds the reveal class to current and route-inserted `.reveal-on-scroll` elements.
+ * Despite the name, it does not wait for viewport entry; it reveals every match immediately.
  */
 export function useScrollReveal() {
   useEffect(() => {

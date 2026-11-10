@@ -6,6 +6,7 @@ import logoUrl from '../../assets/fyi-logo.jpg';
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // One route list drives both desktop links and the mobile drawer.
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },

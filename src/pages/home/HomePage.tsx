@@ -18,6 +18,7 @@ interface HomePageProps {
   onOpenJoin: (eventTitle?: string) => void;
 }
 
+// Compose the home page from focused sections and pass the shared join action to callers.
 export const HomePage: React.FC<HomePageProps> = ({ onOpenJoin }) => {
   return (
     <div className="w-full">
