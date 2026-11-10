@@ -80,7 +80,7 @@ export const HeroSection: React.FC = () => {
 
       {/* Monumental Headline */}
       <div className="max-w-5xl mb-6 relative">
-        <h1 className="font-headline text-[48px] sm:text-[76px] md:text-[96px] lg:text-[112px] font-black uppercase leading-[0.88] tracking-tighter text-primary">
+        <h1 className="font-headline text-[38px] xs:text-[46px] sm:text-[76px] md:text-[96px] lg:text-[112px] font-black uppercase leading-[0.92] sm:leading-[0.88] tracking-tighter text-primary break-words">
           <TextScramble text="IDEAS" as="span" className="kinetic-word" triggerOnHover={true} />{' '}
           <TextScramble text="DON'T" as="span" className="kinetic-word" triggerOnHover={true} />{' '}
           <TextScramble text="SLEEP" as="span" className="kinetic-word" triggerOnHover={true} />{' '}

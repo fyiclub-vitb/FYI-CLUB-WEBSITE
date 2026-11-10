@@ -28,12 +28,14 @@ export const KineticMarqueeRibbon: React.FC<KineticMarqueeRibbonProps> = ({
 
   return (
     <div
-      className={`w-full overflow-hidden py-4 my-8 select-none border-y-3 border-primary relative z-20 ${className}`}
+      className={`w-full overflow-hidden py-4 my-6 sm:my-8 select-none border-y-3 border-primary relative z-20 max-w-full ${className}`}
       style={{
         transform: `rotate(${angle}deg) scale(1.02)`,
       }}
       onMouseEnter={() => setSpeedUp(true)}
       onMouseLeave={() => setSpeedUp(false)}
+      onTouchStart={() => setSpeedUp(true)}
+      onTouchEnd={() => setSpeedUp(false)}
     >
       <div
         className={`${bg} ${textColor} py-2.5 border-y-2 border-primary brutal-shadow-sm flex items-center transition-all`}
