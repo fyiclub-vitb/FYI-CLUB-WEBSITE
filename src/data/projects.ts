@@ -4,11 +4,11 @@ import type { Project } from '../types';
 // ============================================================================
 export const PROJECTS: Project[] = [
   {
-    id: "aether-os",
+    id: "chakravyuh",
     number: "001",
-    title: "AETHER OS",
-    tags: ["DUMMY CONCEPT", "P2P PROTOCOL", "RUST + WASM", "ZERO CENTRAL RELAY"],
-    description: "[DUMMY SPECIFICATION] Campus P2P Mesh Protocol. Designed to explore torrent-speed peer-to-peer data distribution across student hostel blocks with zero central server dependencies during high-traffic exam periods.",
+    title: "Chakravyuh",
+    tags: ["Game", "Web", "Multiplayer", "Puzzle"],
+    description: "A multiplayer espionage puzzle game that combines strategy, deduction, and teamwork to create an immersive experience. Players must collaborate to solve complex challenges, decode encrypted messages, and outwit their opponents in a race against time.",
     specs: [
       { label: "Concept Speed", value: "14.2 MB/s" },
       { label: "Target Density", value: "128+ Peers" },
@@ -16,14 +16,14 @@ export const PROJECTS: Project[] = [
     ],
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
     version: "V1.4 • [DUMMY PROTOTYPE]",
-    repoUrl: "https://github.com/fyiclub-vitb"
+    repoUrl: "https://github.com/fyiclub-vitb/Chakravyuh"
   },
   {
-    id: "neurocanvas",
+    id: "swiftcheck-fyi",
     number: "002",
-    title: "NEUROCANVAS",
-    tags: ["DUMMY CONCEPT", "CREATIVE AI", "WEBGL SHADERS", "IN-BROWSER ONNX"],
-    description: "[DUMMY SPECIFICATION] Zero-Cloud Latent Space Synthesizer. Concept simulation running localized neural diffusion models directly inside client browser memory via WebGL 2.0 at 60fps without cloud server costs.",
+    title: "SwiftCheck-FYI",
+    tags: ["AI", "Attendance", "Management", "Automation"],
+    description: "An intelligent, AI-powered attendance management platform designed to streamline campus operations and enhance the student experience. SwiftCheck replaces traditional manual attendance with a seamless, automated system that saves time, reduces errors, and provides valuable insights.",
     specs: [
       { label: "Target FPS", value: "60 FPS" },
       { label: "Local Latency", value: "18ms" },
@@ -31,12 +31,27 @@ export const PROJECTS: Project[] = [
     ],
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
     version: "WEBGL 2.0 • [DUMMY PROTOTYPE]",
-    demoUrl: "#"
+    demoUrl: "https://swiftcheck-fyi.vercel.app/"
   },
   {
-    id: "pulsebotics",
+    id: "worklin",
     number: "003",
-    title: "PULSEBOTICS",
+    title: "WorkLin",
+    tags: ["Open Source", "Workspace", "Productivity", "Collaborative"],
+    description: "A powerful, open-source workspace platform inspired by Notion. WorkLin combines the flexibility of block-based editing with real-time collaboration, AI assistance, and enterprise-grade features.",
+    specs: [
+      { label: "Telemetry Range", value: "15.8 KM" },
+      { label: "Endurance", value: "9.5 Hours" },
+      { label: "Status", value: "DUMMY PREVIEW", highlight: true }
+    ],
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+    version: "CUSTOM PCB • [DUMMY PROTOTYPE]",
+    demoUrl: "https://worklin-fyi.vercel.app/"
+  },
+  {
+    id: "schedlyx",
+    number: "004",
+    title: "Schedlyx",
     tags: ["DUMMY CONCEPT", "AUTONOMOUS HARDWARE", "LORAWAN", "ROS 2"],
     description: "[DUMMY SPECIFICATION] Autonomous Agro-Field Rover. Low-cost custom carbon-fiber chassis blueprint equipped with multi-spectral crop diagnostic cameras and long-range LoRa sub-GHz telemetry.",
     specs: [
@@ -47,5 +62,20 @@ export const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
     version: "CUSTOM PCB • [DUMMY PROTOTYPE]",
     demoUrl: "#"
+  },
+  {
+    id: "fyi",
+    number: "005",
+    title: "FYI-WEBSITE",
+    tags: ["DUMMY CONCEPT", "AUTONOMOUS HARDWARE", "LORAWAN", "ROS 2"],
+    description: "[DUMMY SPECIFICATION] Autonomous Agro-Field Rover. Low-cost custom carbon-fiber chassis blueprint equipped with multi-spectral crop diagnostic cameras and long-range LoRa sub-GHz telemetry.",
+    specs: [
+      { label: "Telemetry Range", value: "15.8 KM" },
+      { label: "Endurance", value: "9.5 Hours" },
+      { label: "Status", value: "DUMMY PREVIEW", highlight: true }
+    ],
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+    version: "CUSTOM PCB • [DUMMY PROTOTYPE]",
+    demoUrl: "https://fyiclubvitbpl.web.app"
   }
 ];
