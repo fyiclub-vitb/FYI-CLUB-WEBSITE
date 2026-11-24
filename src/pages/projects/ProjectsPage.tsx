@@ -10,9 +10,9 @@ export const ProjectsPage: React.FC = () => {
   // Each category maps to the project record currently assigned to it.
   const filteredProjects = PROJECTS.filter((proj) => {
     if (filter === 'ALL') return true;
-    if (filter === 'SOFTWARE') return proj.id === 'aether-os';
-    if (filter === 'AI') return proj.id === 'neurocanvas';
-    if (filter === 'HARDWARE') return proj.id === 'pulsebotics';
+    if (filter === 'SOFTWARE') return proj.id === 'worklin';
+    if (filter === 'AI') return proj.id === 'swiftcheck-fyi';
+    if (filter === 'HARDWARE') return proj.id === 'schedlyx';
     return true;
   });
 
@@ -38,10 +38,12 @@ export const ProjectsPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse" />
             <span className="font-black uppercase text-primary">
-              [PREVIEW ARCHIVE • DUMMY CONTENT]
+              {/* [PREVIEW ARCHIVE • DUMMY CONTENT] */}
+              [PREVIEW ARCHIVE]
             </span>
             <span className="text-brand-muted hidden sm:inline">
-              — Sample project prototypes shown for layout simulation. Cohort 2026 builds are in development.
+              {/* — Sample project prototypes shown for layout simulation. Cohort 2026 builds are in development. */}
+              Cohort 2026 builds are in development.
             </span>
           </div>
           <Link to="/join" className="font-black text-brand-orange hover:underline uppercase shrink-0">
