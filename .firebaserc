@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "fyiclubvitbpl"
+    "default": "fyiclubvitbpl",
+    "dev": "devfyiclubvitbpl"
   }
 }
-
