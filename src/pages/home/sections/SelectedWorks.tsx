@@ -19,19 +19,19 @@ export const SelectedWorks: React.FC = () => {
             </h2>
           </div>
           <p className="font-mono text-xs sm:text-sm font-bold text-primary max-w-sm">
-            Zero fake screenshots. We only showcase working software and hardware once tested and shipped.
+            Real student builds: multiplayer games, collaborative workspaces, scheduling tools, and campus automation.
           </p>
         </div>
 
-        {/* Notice for Preview / Dummy Content */}
+        {/* Showcase Banner */}
         <div className="mb-8 p-3.5 bg-brand-yellow/30 border-2 border-primary rounded-xl brutal-shadow-sm flex items-center justify-between gap-4 font-mono text-xs">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse" />
             <span className="font-black uppercase text-primary">
-              [PREVIEW BUILDS • DUMMY CONTENT]
+              [LIVE BUILDS • SHIPPED PROJECTS]
             </span>
             <span className="text-brand-muted hidden sm:inline">
-              — Sample builds shown for visual layout preview.
+              — Explore real web apps, games, and campus tools built by FYI Club.
             </span>
           </div>
           <Link to="/projects" className="font-black text-brand-orange hover:underline uppercase shrink-0">
@@ -41,12 +41,23 @@ export const SelectedWorks: React.FC = () => {
 
         {/* Project Cards Stack with 3D Perspective Tilt */}
         <div className="flex flex-col gap-10">
-          {PROJECTS.map((proj) => (
+          {PROJECTS.map((proj) => {
+            const exploreUrl = proj.demoUrl || proj.repoUrl;
+            return (
             <article
               key={proj.id}
               data-tilt
               data-tilt-max="5"
-              className="bg-white border-2 border-primary brutal-shadow-lg p-6 sm:p-8 hover:-translate-y-1 transition-all duration-300 relative group cursor-pointer"
+              data-cursor="card"
+              data-cursor-text={exploreUrl ? 'EXPLORE ↗' : 'PROJECT'}
+              onClick={(event) => {
+                const clickedControl = (event.target as HTMLElement).closest('a, button, input, select, textarea, [role="button"]');
+                if (clickedControl || !exploreUrl) return;
+                window.open(exploreUrl, '_blank', 'noopener,noreferrer');
+              }}
+              className={`bg-white border-2 border-primary brutal-shadow-lg p-6 sm:p-8 hover:-translate-y-1 transition-all duration-300 relative group ${
+                exploreUrl ? 'cursor-pointer' : ''
+              }`}
             >
               {/* Tactical Corner Crosshairs */}
               <div className="absolute top-2 left-2 font-mono text-[10px] text-primary/30 group-hover:text-primary transition-colors select-none">+</div>
@@ -60,7 +71,7 @@ export const SelectedWorks: React.FC = () => {
                   {/* Tags */}
                   <div className="flex flex-wrap items-center gap-2 mb-3">
                     <span className="bg-brand-yellow text-primary border border-primary font-mono text-[10px] font-black px-2 py-0.5 uppercase rounded-sm">
-                      [DUMMY DEMO]
+                      FYI
                     </span>
                     {proj.tags.map((tag, tIdx) => (
                       <span
@@ -108,21 +119,25 @@ export const SelectedWorks: React.FC = () => {
 
                   {/* Action buttons */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <a
-                      href={proj.repoUrl || 'https://github.com/fyiclub-vitb'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-primary text-white hover:bg-brand-orange font-mono text-xs font-black px-5 py-2.5 rounded border-2 border-primary brutal-shadow uppercase tracking-wider"
-                    >
-                      <span>GITHUB REPO</span>
-                      <span className="material-symbols-outlined text-sm">terminal</span>
-                    </a>
+                    {proj.repoUrl && (
+                      <a
+                        href={proj.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-primary text-white hover:bg-brand-orange font-mono text-xs font-black px-5 py-2.5 rounded border-2 border-primary brutal-shadow uppercase tracking-wider"
+                      >
+                        <span>GITHUB REPO</span>
+                        <span className="material-symbols-outlined text-sm">terminal</span>
+                      </a>
+                    )}
                     {proj.demoUrl && (
                       <a
                         href={proj.demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-brand-cyan text-primary hover:bg-brand-yellow font-mono text-xs font-black px-5 py-2.5 rounded border-2 border-primary brutal-shadow uppercase tracking-wider"
                       >
-                        <span>PREVIEW DEMO ↗</span>
+                        <span>VISIT WEBSITE ↗</span>
                       </a>
                     )}
                   </div>
@@ -140,7 +155,8 @@ export const SelectedWorks: React.FC = () => {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

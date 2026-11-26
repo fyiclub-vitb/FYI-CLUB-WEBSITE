@@ -21,14 +21,14 @@ export const ProjectsPage: React.FC = () => {
   return (
     <div className="w-full">
       <PageHeader
-        tag="02 • SHIPPED CODE &amp; HARDWARE"
+        tag="02 • SHIPPED WEB &amp; SOFTWARE BUILDS"
         badge="OPEN SOURCE BY DEFAULT"
-        title="OUR PHYSICAL &amp; DIGITAL BUILDS"
-        subtitle="Exploring systems, WebGL shaders, and embedded robotics. Real student projects and concept previews."
+        title="WHAT WE HAVE BUILT"
+        subtitle="Multiplayer puzzle games, collaborative workspaces, smart event scheduling, campus attendance automation, and our official club platform — built and shipped by FYI Club."
       />
 
       <KineticMarqueeRibbon
-        items={['OPEN SOURCE', 'EMBEDDED SYSTEMS', 'WEBGL SHADERS', 'STUDENT BUILT', 'ZERO FAKE SCREENSHOTS', 'REAL DEPLOYMENTS']}
+        items={['OPEN SOURCE', 'MULTIPLAYER GAMES', 'COLLABORATIVE WORKSPACES', 'EVENT SCHEDULING', 'CAMPUS AUTOMATION', 'LIVE DEPLOYMENTS']}
         angle={1}
         bg="bg-brand-orange"
         textColor="text-white"
@@ -71,10 +71,23 @@ export const ProjectsPage: React.FC = () => {
 
         {/* Project Grid */}
         <div className="flex flex-col gap-12">
-          {filteredProjects.map((proj) => (
+          {filteredProjects.map((proj) => {
+            const exploreUrl = proj.demoUrl || proj.repoUrl;
+            return (
             <article
               key={proj.id}
-              className="bg-white border-2 border-primary brutal-shadow-lg p-6 sm:p-10 hover:-translate-y-1 transition-all duration-300 relative group"
+              data-tilt
+              data-tilt-max="5"
+              data-cursor="card"
+              data-cursor-text={exploreUrl ? 'EXPLORE ↗' : 'PROJECT'}
+              onClick={(event) => {
+                const clickedControl = (event.target as HTMLElement).closest('a, button, input, select, textarea, [role="button"]');
+                if (clickedControl || !exploreUrl) return;
+                window.open(exploreUrl, '_blank', 'noopener,noreferrer');
+              }}
+              className={`bg-white border-2 border-primary brutal-shadow-lg p-6 sm:p-10 hover:-translate-y-1 transition-all duration-300 relative group ${
+                exploreUrl ? 'cursor-pointer' : ''
+              }`}
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-6 flex flex-col">
@@ -128,21 +141,25 @@ export const ProjectsPage: React.FC = () => {
 
                   {/* Action buttons */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <a
-                      href={proj.repoUrl || 'https://github.com/fyiclub-vitb'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-primary text-white hover:bg-brand-orange font-mono text-xs font-black px-5 py-2.5 rounded border-2 border-primary brutal-shadow uppercase tracking-wider"
-                    >
-                      <span>GITHUB REPO</span>
-                      <span className="material-symbols-outlined text-sm">terminal</span>
-                    </a>
+                    {proj.repoUrl && (
+                      <a
+                        href={proj.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-primary text-white hover:bg-brand-orange font-mono text-xs font-black px-5 py-2.5 rounded border-2 border-primary brutal-shadow uppercase tracking-wider"
+                      >
+                        <span>GITHUB REPO</span>
+                        <span className="material-symbols-outlined text-sm">terminal</span>
+                      </a>
+                    )}
                     {proj.demoUrl && (
                       <a
                         href={proj.demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
                         className="magnetic-btn btn-elastic inline-flex items-center gap-2 bg-brand-cyan text-primary hover:bg-brand-yellow font-mono text-xs font-black px-5 py-2.5 rounded border-2 border-primary brutal-shadow uppercase tracking-wider"
                       >
-                        <span>PREVIEW DEMO ↗</span>
+                        <span>VISIT WEBSITE ↗</span>
                       </a>
                     )}
                   </div>
@@ -164,7 +181,8 @@ export const ProjectsPage: React.FC = () => {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
         {/* Propose a build banner */}

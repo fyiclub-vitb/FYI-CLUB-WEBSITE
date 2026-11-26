@@ -1,4 +1,9 @@
 import type { Project } from '../types';
+import chakravyuhImg from '../assets/images/chakravyuh.webp';
+import worklinImg from '../assets/images/worklin.webp';
+import schedlyxImg from '../assets/images/schedlyx.webp';
+import swiftcheckImg from '../assets/images/swiftcheck.webp';
+import fyiWebsiteImg from '../assets/images/fyi-website.webp';
 
 // PROJECTS & EXPERIMENTS
 
@@ -12,7 +17,7 @@ export const PROJECTS: Project[] = [
     specs: [
       { label: "Status", value: "Completed" },
     ],
-    image: "src/assets/images/chakravyuh.webp",
+    image: chakravyuhImg,
     version: "v1.4 • Web",
     repoUrl: "https://github.com/fyiclub-vitb/Chakravyuh"
   },
@@ -25,9 +30,9 @@ export const PROJECTS: Project[] = [
     specs: [
         { label: "Status", value: "Completed" },
     ],
-    image: "src/assets/images/worklin.webp",
+    image: worklinImg,
     version: "Web App • Open Source",
-    repoUrl: "https://worklin-fyi.vercel.app/"
+    demoUrl: "https://worklin-fyi.vercel.app/"
   },
   {
     id: "schedlyx",
@@ -38,9 +43,9 @@ export const PROJECTS: Project[] = [
     specs: [
       { label: "Status", value: "Completed" },
     ],
-    image: "src/assets/images/schedlyx.webp",
+    image: schedlyxImg,
     version: "Web App • Open Source",
-    repoUrl: "https://schedlyx-fyi.vercel.app/"
+    demoUrl: "https://schedlyx-fyi.vercel.app/"
   },
   {
     id: "swiftcheck-fyi",
@@ -51,9 +56,9 @@ export const PROJECTS: Project[] = [
     specs: [
       { label: "Status", value: "Completed" },
     ],
-    image: "src/assets/images/swiftcheck.webp",
+    image: swiftcheckImg,
     version: "Web App • Live",
-    repoUrl: "https://swiftcheck-fyi.vercel.app/"
+    demoUrl: "https://swiftcheck-fyi.vercel.app/"
   },
   {
     id: "fyi",
@@ -64,8 +69,9 @@ export const PROJECTS: Project[] = [
     specs: [
       { label: "Status", value: "Completed" },
     ],
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    image: fyiWebsiteImg,
     version: "Website • Live",
-    repoUrl: "https://fyiclubvitbpl.web.app"
+    repoUrl: "https://github.com/fyiclub-vitb/FYI-CLUB-WEBSITE",
+    demoUrl: "https://fyiclubvitbpl.web.app/"
   }
 ];

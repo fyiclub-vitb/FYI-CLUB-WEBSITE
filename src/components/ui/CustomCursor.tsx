@@ -70,24 +70,30 @@ export const CustomCursor: React.FC = () => {
       if (!target || !ringRef.current || !dotRef.current || !labelRef.current) return;
 
       const card = target.closest('[data-cursor="card"], [data-tilt]');
-      if (card && card !== lastTarget) {
-        lastTarget = card as HTMLElement;
-        playHoverTick();
-        ringRef.current.className = 'cursor-ring cursor-ring-card';
-        labelRef.current.textContent = card.getAttribute('data-cursor-text') || 'EXPLORE ↗';
-        labelRef.current.classList.remove('opacity-0');
-        dotRef.current.style.opacity = '0';
+      const clickable = target.closest('a, button, input, select, textarea, [role="button"], .btn-elastic, .magnetic-btn');
+
+      // Prefer nested interactive controls (e.g. repo/website links inside a card) over the card cursor pill.
+      if (clickable && (!card || (card.contains(clickable) && card !== clickable))) {
+        if (clickable !== lastTarget) {
+          lastTarget = clickable as HTMLElement;
+          playHoverTick();
+          ringRef.current.className = 'cursor-ring cursor-ring-interactive';
+          labelRef.current.textContent = '';
+          labelRef.current.classList.add('opacity-0');
+          dotRef.current.style.opacity = '0.4';
+        }
         return;
       }
 
-      const clickable = target.closest('a, button, input, select, textarea, [role="button"], .btn-elastic, .magnetic-btn');
-      if (clickable && clickable !== lastTarget) {
-        lastTarget = clickable as HTMLElement;
-        playHoverTick();
-        ringRef.current.className = 'cursor-ring cursor-ring-interactive';
-        labelRef.current.textContent = '';
-        labelRef.current.classList.add('opacity-0');
-        dotRef.current.style.opacity = '0.4';
+      if (card) {
+        if (card !== lastTarget) {
+          lastTarget = card as HTMLElement;
+          playHoverTick();
+          ringRef.current.className = 'cursor-ring cursor-ring-card';
+          labelRef.current.textContent = card.getAttribute('data-cursor-text') || 'EXPLORE ↗';
+          labelRef.current.classList.remove('opacity-0');
+          dotRef.current.style.opacity = '0';
+        }
         return;
       }
 
