@@ -8,15 +8,13 @@ export const ProjectsPage: React.FC = () => {
   const [filter, setFilter] = useState<'ALL' | 'SOFTWARE' | 'AI' | 'HARDWARE'>('ALL');
 
   // Each category maps to the project record currently assigned to it.
-  // const filteredProjects = PROJECTS.filter((proj) => {
-  //   if (filter === 'ALL') return true;
-  //   if (filter === 'SOFTWARE') return proj.id === 'aether-os';
-  //   if (filter === 'AI') return proj.id === 'neurocanvas';
-  //   if (filter === 'HARDWARE') return proj.id === 'pulsebotics';
-  //   return true;
-  // });
-
-  const filteredProjects = PROJECTS;
+  const filteredProjects = PROJECTS.filter((proj) => {
+    if (filter === 'ALL') return true;
+    if (filter === 'SOFTWARE') return proj.id === 'aether-os';
+    if (filter === 'AI') return proj.id === 'neurocanvas';
+    if (filter === 'HARDWARE') return proj.id === 'pulsebotics';
+    return true;
+  });
 
   return (
     <div className="w-full">
@@ -40,11 +38,10 @@ export const ProjectsPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse" />
             <span className="font-black uppercase text-primary">
-              {/* [PREVIEW ARCHIVE • DUMMY CONTENT] */}
-              [Showcase your Build !]
+              [PREVIEW ARCHIVE • DUMMY CONTENT]
             </span>
             <span className="text-brand-muted hidden sm:inline">
-              —  Cohort 2026 builds are in development.
+              — Sample project prototypes shown for layout simulation. Cohort 2026 builds are in development.
             </span>
           </div>
           <Link to="/join" className="font-black text-brand-orange hover:underline uppercase shrink-0">
@@ -53,7 +50,7 @@ export const ProjectsPage: React.FC = () => {
         </div>
 
         {/* Filter Navigation */}
-        {/* <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b-2 border-primary">
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b-2 border-primary">
           {(['ALL', 'SOFTWARE', 'AI', 'HARDWARE'] as const).map((tab) => (
             <button
               key={tab}
@@ -67,7 +64,7 @@ export const ProjectsPage: React.FC = () => {
               {tab === 'ALL' ? 'ALL ARTIFACTS' : `${tab} WING`}
             </button>
           ))}
-        </div> */}
+        </div>
 
         {/* Project Grid */}
         <div className="flex flex-col gap-12">
@@ -80,7 +77,7 @@ export const ProjectsPage: React.FC = () => {
                 <div className="lg:col-span-6 flex flex-col">
                   <div className="flex flex-wrap items-center gap-2 mb-3">
                     <span className="bg-brand-yellow text-primary border border-primary font-mono text-[10px] font-black px-2 py-0.5 uppercase rounded-sm">
-                      FYI
+                      [DUMMY / PREVIEW]
                     </span>
                     {proj.tags.map((tag, tIdx) => (
                       <span
